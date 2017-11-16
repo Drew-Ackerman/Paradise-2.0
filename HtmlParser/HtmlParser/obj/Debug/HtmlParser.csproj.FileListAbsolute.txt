@@ -1,0 +1,12 @@
+C:\Users\Matthew Jensen\Desktop\HtmlParser\HtmlParser\bin\Debug\HtmlParser.exe.config
+C:\Users\Matthew Jensen\Desktop\HtmlParser\HtmlParser\bin\Debug\HtmlParser.exe
+C:\Users\Matthew Jensen\Desktop\HtmlParser\HtmlParser\bin\Debug\HtmlParser.pdb
+C:\Users\Matthew Jensen\Desktop\HtmlParser\HtmlParser\obj\Debug\HtmlParser.csprojResolveAssemblyReference.cache
+C:\Users\Matthew Jensen\Desktop\HtmlParser\HtmlParser\obj\Debug\HtmlParser.exe
+C:\Users\Matthew Jensen\Desktop\HtmlParser\HtmlParser\obj\Debug\HtmlParser.pdb
+D:\Documents\GitHub\Paradise\Paradise\HtmlParser\HtmlParser\bin\Debug\HtmlParser.exe.config
+D:\Documents\GitHub\Paradise\Paradise\HtmlParser\HtmlParser\obj\Debug\HtmlParser.exe
+D:\Documents\GitHub\Paradise\Paradise\HtmlParser\HtmlParser\obj\Debug\HtmlParser.pdb
+D:\Documents\GitHub\Paradise\Paradise\HtmlParser\HtmlParser\bin\Debug\HtmlParser.exe
+D:\Documents\GitHub\Paradise\Paradise\HtmlParser\HtmlParser\bin\Debug\HtmlParser.pdb
+D:\Documents\GitHub\Paradise\Paradise\HtmlParser\HtmlParser\obj\Debug\HtmlParser.csprojResolveAssemblyReference.cache
