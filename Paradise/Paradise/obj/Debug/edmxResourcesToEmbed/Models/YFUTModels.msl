@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="YFUTModelStoreContainer" CdmEntityContainer="YFUTEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="YFUTModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="admin_ID" ColumnName="admin_ID" />
+          <ScalarProperty Name="staff_ID" ColumnName="staff_ID" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+          <ScalarProperty Name="superAdmin" ColumnName="superAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Donors">
+      <EntityTypeMapping TypeName="YFUTModel.Donor">
+        <MappingFragment StoreEntitySet="Donor">
+          <ScalarProperty Name="donor_ID" ColumnName="donor_ID" />
+          <ScalarProperty Name="donorName" ColumnName="donorName" />
+          <ScalarProperty Name="donorLevel" ColumnName="donorLevel" />
+          <ScalarProperty Name="donorYear" ColumnName="donorYear" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Errors">
+      <EntityTypeMapping TypeName="YFUTModel.Error">
+        <MappingFragment StoreEntitySet="Error">
+          <ScalarProperty Name="error_ID" ColumnName="error_ID" />
+          <ScalarProperty Name="errorDesc" ColumnName="errorDesc" />
+          <ScalarProperty Name="errorDate" ColumnName="errorDate" />
+          <ScalarProperty Name="admin_ID" ColumnName="admin_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pages">
+      <EntityTypeMapping TypeName="YFUTModel.Page">
+        <MappingFragment StoreEntitySet="Page">
+          <ScalarProperty Name="page_ID" ColumnName="page_ID" />
+          <ScalarProperty Name="pageName" ColumnName="pageName" />
+          <ScalarProperty Name="pageDesc" ColumnName="pageDesc" />
+          <ScalarProperty Name="content" ColumnName="content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staffs">
+      <EntityTypeMapping TypeName="YFUTModel.Staff">
+        <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="imageName" ColumnName="imageName" />
+          <ScalarProperty Name="staff_ID" ColumnName="staff_ID" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="jobTitle" ColumnName="jobTitle" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="foundation" ColumnName="foundation" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
