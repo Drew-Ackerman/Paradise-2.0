@@ -82,7 +82,10 @@ namespace Paradise.Controllers
         {
             if(firstName != "" && lastName != "" && email != "" && message != "")
             {
-                //SmtpClient
+                MailMessage mailMessage = new MailMessage(email, "MatthewJensen7@mail.weber.edu", "Volunteering", message);
+                SmtpClient mail = new SmtpClient("smtp.gmail.com");
+                //Add authentication for email
+                mail.Send(mailMessage);
             }
             return View();
         }
