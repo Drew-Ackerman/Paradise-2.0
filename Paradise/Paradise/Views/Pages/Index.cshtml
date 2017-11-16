@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Paradise.Models.Page>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_EditLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pageDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.content)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pageName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pageDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.content)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.page_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.page_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.page_ID })
+        </td>
+    </tr>
+}
+
+</table>

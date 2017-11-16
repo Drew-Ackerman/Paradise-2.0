@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="YFUTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="admin_ID" />
+          </Key>
+          <Property Name="admin_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="staff_ID" Type="int" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="userPassword" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="superAdmin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Donor">
+          <Key>
+            <PropertyRef Name="donor_ID" />
+          </Key>
+          <Property Name="donor_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="donorName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="donorLevel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="donorYear" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone" Type="nvarchar" MaxLength="11" />
+          <Property Name="email" Type="nvarchar" MaxLength="30" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="error_ID" />
+          </Key>
+          <Property Name="error_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="errorDesc" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="errorDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="admin_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="page_ID" />
+          </Key>
+          <Property Name="page_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pageName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="pageDesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="content" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="staff_ID" />
+          </Key>
+          <Property Name="staff_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="jobTitle" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="position" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="foundation" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="30" />
+          <Property Name="imageName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="Fk_Admin_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="staff_ID" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="staff_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Error_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Error" Type="Self.Error" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="admin_ID" />
+            </Principal>
+            <Dependent Role="Error">
+              <PropertyRef Name="admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YFUTModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donor" EntityType="Self.Donor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Error" EntityType="Self.Error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Fk_Admin_Staff" Association="Self.Fk_Admin_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Error_Admin" Association="Self.Fk_Error_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Error" EntitySet="Error" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YFUTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="admin_ID" />
+          </Key>
+          <Property Name="admin_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="staff_ID" Type="Int32" Nullable="false" />
+          <Property Name="userName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="superAdmin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="Self.Fk_Admin_Staff" FromRole="Admin" ToRole="Staff" />
+          <NavigationProperty Name="Errors" Relationship="Self.Fk_Error_Admin" FromRole="Admin" ToRole="Error" />
+        </EntityType>
+        <EntityType Name="Donor">
+          <Key>
+            <PropertyRef Name="donor_ID" />
+          </Key>
+          <Property Name="donor_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="donorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="donorLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="donorYear" Type="String" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="error_ID" />
+          </Key>
+          <Property Name="error_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="errorDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="errorDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="admin_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.Fk_Error_Admin" FromRole="Error" ToRole="Admin" />
+        </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="page_ID" />
+          </Key>
+          <Property Name="page_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pageName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pageDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="staff_ID" />
+          </Key>
+          <Property Name="staff_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="jobTitle" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="position" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="foundation" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Admins" Relationship="Self.Fk_Admin_Staff" FromRole="Staff" ToRole="Admin" />
+          <Property Name="imageName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="Fk_Admin_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="staff_ID" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="staff_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_Error_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Error" Type="Self.Error" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="admin_ID" />
+            </Principal>
+            <Dependent Role="Error">
+              <PropertyRef Name="admin_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YFUTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Donors" EntityType="Self.Donor" />
+          <EntitySet Name="Errors" EntityType="Self.Error" />
+          <EntitySet Name="Pages" EntityType="Self.Page" />
+          <EntitySet Name="Staffs" EntityType="Self.Staff" />
+          <AssociationSet Name="Fk_Admin_Staff" Association="Self.Fk_Admin_Staff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_Error_Admin" Association="Self.Fk_Error_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="Error" EntitySet="Errors" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YFUTModelStoreContainer" CdmEntityContainer="YFUTEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="YFUTModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="admin_ID" ColumnName="admin_ID" />
+                <ScalarProperty Name="staff_ID" ColumnName="staff_ID" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+                <ScalarProperty Name="superAdmin" ColumnName="superAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donors">
+            <EntityTypeMapping TypeName="YFUTModel.Donor">
+              <MappingFragment StoreEntitySet="Donor">
+                <ScalarProperty Name="donor_ID" ColumnName="donor_ID" />
+                <ScalarProperty Name="donorName" ColumnName="donorName" />
+                <ScalarProperty Name="donorLevel" ColumnName="donorLevel" />
+                <ScalarProperty Name="donorYear" ColumnName="donorYear" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Errors">
+            <EntityTypeMapping TypeName="YFUTModel.Error">
+              <MappingFragment StoreEntitySet="Error">
+                <ScalarProperty Name="error_ID" ColumnName="error_ID" />
+                <ScalarProperty Name="errorDesc" ColumnName="errorDesc" />
+                <ScalarProperty Name="errorDate" ColumnName="errorDate" />
+                <ScalarProperty Name="admin_ID" ColumnName="admin_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="YFUTModel.Page">
+              <MappingFragment StoreEntitySet="Page">
+                <ScalarProperty Name="page_ID" ColumnName="page_ID" />
+                <ScalarProperty Name="pageName" ColumnName="pageName" />
+                <ScalarProperty Name="pageDesc" ColumnName="pageDesc" />
+                <ScalarProperty Name="content" ColumnName="content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="YFUTModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="imageName" ColumnName="imageName" />
+                <ScalarProperty Name="staff_ID" ColumnName="staff_ID" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="jobTitle" ColumnName="jobTitle" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="foundation" ColumnName="foundation" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

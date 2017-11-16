@@ -1,0 +1,43 @@
+﻿@model Paradise.Models.Page
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_EditLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Page</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pageName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pageName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pageDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pageDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.content)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.page_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

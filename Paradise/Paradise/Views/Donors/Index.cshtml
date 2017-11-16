@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Paradise.Models.Donor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_EditLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.donorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.donorLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.donorYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.active)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.donorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.donorLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.donorYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.active)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.donor_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.donor_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.donor_ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

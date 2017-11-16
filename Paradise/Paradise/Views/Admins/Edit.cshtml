@@ -1,0 +1,85 @@
+﻿@model Paradise.Models.Admin
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_EditLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h2>Edit</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Admin</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.admin_ID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.staff_ID, "staff_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @if (Session["isSuperAdmin"]?.ToString() == "True")
+                    {
+                        @Html.DropDownList("staff_ID", null, htmlAttributes: new { @class = "form-control" })
+                    }
+                    else
+                    {
+                        List<Paradise.Models.Staff> staffList = new List<Paradise.Models.Staff>();
+                        staffList.Add(Model.Staff);
+                        @Html.DropDownList("staff_ID", new SelectList(staffList, "staff_ID", "firstName", Model.staff_ID), htmlAttributes: new { @class = "form-control" })
+                    }
+                    @Html.ValidationMessageFor(model => model.staff_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.userName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.userPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.userPassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.superAdmin, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @if (Session["isSuperAdmin"]?.ToString() == "True")
+                        {
+                            @Html.EditorFor(model => model.superAdmin)
+                        }
+                        else
+                        {
+                            @Html.EditorFor(model => model.superAdmin, new { htmlAttributes = new { onclick = "return false" } })
+                        }
+                        @Html.ValidationMessageFor(model => model.superAdmin, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (Session["isSuperAdmin"]?.ToString() == "True")
+    {
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

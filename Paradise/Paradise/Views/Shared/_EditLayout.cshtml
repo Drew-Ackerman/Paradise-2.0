@@ -1,0 +1,237 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="@ViewBag.Description" />
+    <meta name="keywords" content="@ViewBag.Keywords" />
+    <meta name="author" content="Coders in Paradise" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/editScript.js")
+
+    @if (ViewBag.controllerName == "AboutUs") {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#staff").empty();
+
+                function changeStaff(staff) {
+                    $("#staff").append(staff);
+                }
+
+                @foreach (Paradise.Models.Staff staff in ViewBag.staff)
+                {
+                    if(staff.active) { 
+                        string html = "<div class=\"col-xs-12 col-md-4 thumbnail\" style=\"text-align:center\"><img src=\"/Content/Image/" + staff.imageName + "\" title=\"" + staff.firstName + " " + staff.lastName + "\" alt=\"" + staff.firstName + " " + staff.lastName + "\" class=\"img-responsive center-block\"><p class=\"caption\">" + staff.firstName + " " + staff.lastName + "<br>" + staff.jobTitle + ", Youth Futures<br>" + staff.position + ", " + staff.foundation + "<br><a href=\"mailto:" + staff.email + "\">" + staff.email + "</a></p></div>";
+                        @:changeStaff('@Html.Raw(html)');
+                    }
+                }
+
+            });
+        </script>
+    }
+    else if (ViewBag.controllerName == "Program")
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //Empty each section
+                $("#platinumDonors").empty();
+                $("#goldDonors").empty();
+                $("#silverDonors").empty();
+                $("#bronzeDonors").empty();
+
+                //Add a list to each section
+                $("#platinumDonors").append("<div class=\"row donor_list\"></div>");
+                $("#goldDonors").append("<div class=\"row donor_list\"></div>");
+                $("#silverDonors").append("<div class=\"row donor_list\"></div>");
+                $("#bronzeDonors").append("<div class=\"row donor_list\"></div>");
+
+                //Append the donors onto the lists
+                function changeDonors(level, donor) {
+                    if (level == "platinum") {
+                        $("#platinumDonors > .donor_list").append(donor);
+                    }
+                    else if (level == "gold") {
+                        $("#goldDonors > .donor_list").append(donor);
+                    }
+                    else if (level == "silver") {
+                        $("#silverDonors > .donor_list").append(donor);
+                    }
+                    else if (level == "bronze") {
+                        $("#bronzeDonors > .donor_list").append(donor);
+                    }
+                }
+
+                @foreach (Paradise.Models.Donor donor in ViewBag.donors)
+                {
+                    if(donor.active == true) {
+                        string level = donor.donorLevel.ToLower();
+                        string html = "<div class=\"col-xs-4 donor_box ";
+
+                        if (level == "platinum")
+                        {
+                            html += "plat\">";
+                        }
+                        else if (level == "gold")
+                        {
+                            html += "gold\">";
+                        }
+                        else if (level == "silver")
+                        {
+                            html += "silver\">";
+                        }
+                        else if (level == "bronze")
+                        {
+                            html += "bronze\">";
+                        }
+
+                        html += "<p class=\"donor_name\">" + donor.donorName + "</p><p>" + donor.donorYear + "</p></div>";
+                        @:changeDonors('@level.ToString()', '@Html.Raw(html)');
+                    }
+                }
+
+            });
+        </script>
+    }
+
+    <style>
+        #profileImage {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="main-body">
+        <nav class="navbar">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#"><img src="/Content/Image/yf_logo.svg" alt="Youth Futures Logo" /></a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="">
+                        <ul class="nav navbar-nav navbar-right top-pad-small">
+                            <li class="dropdown">@Html.ActionLink("Home", "Edit", "Home")</li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Programs</a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Shelter", "Edit", "Program")</li>
+                                    <li>@Html.ActionLink("Drop-in", "Edit", "Program", null, null, "dropin-anchor", new { categoryid = "Drop-In" }, null)</li>
+                                    <li>@Html.ActionLink("Street Outreach", "Edit", "Program", null, null, "street-anchor", new { categoryid = "Street" }, null)</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Get Involved</a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Events", "Edit", "Program", null, null, "events-anchor", new { categoryid = "Events" }, null)</li>
+                                    <li>@Html.ActionLink("Donor Recognition", "Edit", "Program", null, null, "donor-anchor", new { categoryid = "Donor" }, null)</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Us</a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("History", "Edit", "AboutUs")</li>
+                                    <li>@Html.ActionLink("Staff", "Edit", "AboutUs", null, null, "staff-anchor", new { categoryid = "Staff" }, null)</li>
+                                    <li>@Html.ActionLink("Board", "Edit", "AboutUs", null, null, "board-anchor", new { categoryid = "Board" }, null)</li>
+                                    <li>@Html.ActionLink("Media", "Edit", "AboutUs", null, null, "media-anchor", new { categoryid = "Media" }, null)</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">@Html.ActionLink("Contact Info", "Edit", "AboutUs", null, null, "contact-anchor", new { categoryid = "Contact" }, null)</li>
+                            <li class="dropdown">@Html.ActionLink("Donate", "Edit", "Program", null, null, "donate-anchor", new { categoryid = "Donate" }, null)</li>                        
+                            @*@Html.Partial("_LoginPartial")*@
+
+                            <li class="dropdown">
+                                    <img src="/Content/Image/@Session["imageSrc"]" alt="@Session["userName"]" class="dropdown-toggle" id="profileImage" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" />
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            @Html.ActionLink("Add/Change staff", "Index", "Staffs")
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Add/Change donors", "Index", "Donors")
+                                        </li>
+                                        @if(Session["isSuperAdmin"]?.ToString() == "True")
+                                        {
+                                            <li>
+                                                @Html.ActionLink("Add/Change Admins", "Index", "Admins")
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                @Html.ActionLink("Change Login Information", "Edit", "Admins", routeValues: new { id = Session["adminID"] }, htmlAttributes: null)
+                                            </li>
+                                        }
+                                        @if (Model is Paradise.Models.Page) {
+                                        <li>
+                                            <button onclick="savePage('@ViewBag.controllerName', '@Model.page_ID', '@Model.pageName', '@Model.pageDesc')">Save</button>
+                                        </li>
+                                        }
+                                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logout", @class = "dropdown" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <li>
+                                                <a href="javascript:document.getElementById('logout').submit()">Log Out</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            <li>
+                                <button id="editBtn" onclick="toggleEditBtn()">Turn edit ON</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+
+            @Html.Partial("_EditToolBxPartial")
+            <div id="renderBody">
+                @RenderBody()
+            </div>
+
+        <footer id="footer" class="container-fluid">
+            <script type="text/javascript" src="http://arrow.scrolltotop.com/arrow20.js"></script>
+
+            <div class="row side-pad">
+                <div class="col-xs-3">
+                    <p class="white-font">Contact</p>
+                    <a class="darkgrey_font" href="mailto:info@yfut.org">Email: info@yfut.org</a>
+                    <p>Phone: 801-528-1214</p>
+                </div>
+                <div class="col-xs-3">
+                    <p class="white-font">Mailing Address</p>
+                    <p>Youth Futures<br /> POB 160301<br /> Clearfield, UT 84016</p>
+                </div>
+                <div class="col-xs-3">
+                    <p class="white-font">Shelter Address</p>
+                    <p>Youth Futures<br /> 2760 S. Adams Ave<br /> Ogden, UT 84403</p>
+                </div>
+                <div class="col-sm-3 verticle-pad-small">
+                    <a class="fa fa-instagram fa-4x darkgrey_font" href="#"></a>
+                    <a class="fa fa-twitter-square fa-4x darkgrey_font" href="#"></a>
+                    <a class="fa fa-tumblr-square fa-4x darkgrey_font" href="#"></a>
+                    <a class="fa fa-facebook-square fa-4x darkgrey_font" href="#"></a>
+                </div>
+            </div>
+            <div class="row copyright top-pad-small">
+                <p class="white-font">© Youth Futures, Inc.</p>
+            </div>
+        </footer>
+        </div>
+</body>
+</html>
