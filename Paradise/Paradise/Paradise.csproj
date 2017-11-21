@@ -238,7 +238,7 @@
     <Content Include="Content\Image\arrow_right.png" />
     <Content Include="Content\Image\board_header.jpg" />
     <Content Include="Content\Image\calendar_icon.png" />
-    <Content Include="Content\Image\Paradise.png" />
+    <Content Include="Content\profileImages\Paradise.png" />
     <Content Include="Content\Image\contact_header.jpg" />
     <Content Include="Content\Image\contact_map.jpg" />
     <Content Include="Content\Image\donate_cart.svg" />
@@ -276,10 +276,10 @@
     <Content Include="Content\Image\purpose.png" />
     <Content Include="Content\Image\shoppingcartIcon.JPG" />
     <Content Include="Content\Image\shoppingcart_icon.png" />
-    <Content Include="Content\Image\staff_alyson.jpg" />
+    <Content Include="Content\profileImages\staff_alyson.jpg" />
     <Content Include="Content\Image\staff_header.jpg" />
-    <Content Include="Content\Image\staff_justine.jpg" />
-    <Content Include="Content\Image\staff_susan.jpg" />
+    <Content Include="Content\profileImages\staff_justine.jpg" />
+    <Content Include="Content\profileImages\staff_susan.jpg" />
     <Content Include="Content\Image\the_group_logo.png" />
     <Content Include="Content\Image\tumbler.svg" />
     <Content Include="Content\Image\twitter.svg" />

@@ -28,7 +28,7 @@
                 @foreach (Paradise.Models.Staff staff in ViewBag.staff)
                 {
                     if(staff.active) {
-                        string html = "<div class=\"col-xs-12 col-md-4 thumbnail\" style=\"text-align:center\"><img src=\"/Content/Image/" + staff.imageName + "\" title=\"" + staff.firstName + " " + staff.lastName + "\" alt=\"" + staff.firstName + " " + staff.lastName + "\" class=\"img-responsive center-block\"><p class=\"caption\">" + staff.firstName + " " + staff.lastName + "<br>" + staff.jobTitle + ", Youth Futures<br>" + staff.position + ", " + staff.foundation + "<br><a href=\"mailto:" + staff.email + "\">" + staff.email + "</a></p></div>";
+                        string html = "<div class=\"col-xs-12 col-md-4 thumbnail\" style=\"text-align:center\"><img src=\"/Content/profileImages/" + staff.imageName + "\" title=\"" + staff.firstName + " " + staff.lastName + "\" alt=\"" + staff.firstName + " " + staff.lastName + "\" class=\"img-responsive center-block\"><p class=\"caption\">" + staff.firstName + " " + staff.lastName + "<br>" + staff.jobTitle + ", Youth Futures<br>" + staff.position + ", " + staff.foundation + "<br><a href=\"mailto:" + staff.email + "\">" + staff.email + "</a></p></div>";
                         @:changeStaff('@Html.Raw(html)');
                     }
                 }

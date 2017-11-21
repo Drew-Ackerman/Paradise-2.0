@@ -59,7 +59,7 @@ namespace Paradise.Models
         public string email;
         [Required]
         [StringLength(30)]
-        [Display(Name = "Image Name")]
+        [Display(Name = "Profile Image")]
         public string imageName;
         [Required]
         [Display(Name = "Active")]

@@ -83,9 +83,13 @@ namespace Paradise.Controllers
         {
             if(firstName != "" && lastName != "" && email != "" && message != "")
             {
-                MailMessage mailMessage = new MailMessage(email, "MatthewJensen7@mail.weber.edu", "Volunteering", message);
-                SmtpClient mail = new SmtpClient("smtp.gmail.com");
-                mail.Credentials = CredentialCache.DefaultNetworkCredentials;
+                string messageBody = "My name is : " + firstName + " " + lastName + Environment.NewLine + "My phone number is : " + phone + Environment.NewLine + message;
+                MailMessage mailMessage = new MailMessage(email, "MatthewJensen7@mail.weber.edu", "Volunteering", messageBody);
+                SmtpClient mail = new SmtpClient();
+                mail.Credentials = new System.Net.NetworkCredential();
+                mail.Port = 587;
+                mail.Host = "smtp.gmail.com";
+                mail.EnableSsl = true;
                 //Add authentication for email
                 mail.Send(mailMessage);
             }

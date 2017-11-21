@@ -79,7 +79,23 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.imageName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.imageName, new { htmlAttributes = new { @class = "form-control" } })
+                    @{
+                        List<string> fileNames = new List<string>();
+                        try
+                        {
+                            //Get all of the image file names
+                            string[] files = Directory.GetFiles(Server.MapPath("~/Content/profileImages"));
+                            foreach (string file in files)
+                            {
+                                fileNames.Add(Path.GetFileName(file));
+                            }
+                        }
+                        catch (IOException e)
+                        {
+
+                        }
+                    }
+                    @Html.DropDownList("imageName", new SelectList(fileNames, Model.imageName), htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.imageName, "", new { @class = "text-danger" })
                 </div>
             </div>

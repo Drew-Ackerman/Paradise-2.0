@@ -29,7 +29,14 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.donorLevel, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.donorLevel, new { htmlAttributes = new { @class = "form-control" } })
+                    @{
+                        List<string> donorLevels = new List<string>();
+                        donorLevels.Add("Platinum");
+                        donorLevels.Add("Gold");
+                        donorLevels.Add("Silver");
+                        donorLevels.Add("Bronze");
+                    }
+                    @Html.DropDownList("donorLevel", new SelectList(donorLevels, Model.donorLevel), htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.donorLevel, "", new { @class = "text-danger" })
                 </div>
             </div>

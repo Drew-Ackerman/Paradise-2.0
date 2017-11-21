@@ -34,7 +34,7 @@
                         donorLevels.Add("Silver");
                         donorLevels.Add("Bronze");
                     }
-                    @Html.DropDownList("donorLevels", new SelectList(donorLevels), htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownList("donorLevel", new SelectList(donorLevels), htmlAttributes: new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.donorLevel, "", new { @class = "text-danger" })
                 </div>
             </div>
