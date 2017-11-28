@@ -76,4 +76,20 @@
         }
 
     </table>
+
+    <!--Move to its own page and add more features?-->
+    <form action="/Staffs/Upload" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label for="image" class="control-label col-md-2">Add a profile image:</label>
+                <div class="col-md-10">
+                    <input type="file" name="image" id="image" />
+                </div>
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Upload" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </form>
 </div>

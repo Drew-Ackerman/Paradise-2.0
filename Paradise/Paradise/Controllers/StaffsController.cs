@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Paradise.Models;
+using System.Windows.Forms;
+using System.IO;
 
 namespace Paradise.Controllers
 {
@@ -187,6 +189,34 @@ namespace Paradise.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Upload(HttpPostedFileBase image)
+        {
+            if (Session["isSuperAdmin"]?.ToString() != null)
+            {
+                if (image != null && image.ContentLength > 0)
+                {
+                    string fileName = Path.GetFileName(image.FileName);
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Content/profileImages"), fileName));
+                }
+
+                string url = this.Request.UrlReferrer.AbsolutePath;
+                if (url != null)
+                {
+                    return Redirect(url);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Staffs");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }
