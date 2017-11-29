@@ -515,14 +515,18 @@ namespace Paradise.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            Session.Remove("adminID");
-            Session.Remove("userName");
-            Session.Remove("isSuperAdmin");
-            Session.Remove("imageSrc");
+            //Session.Remove("adminID");
+            //Session.Remove("userName");
+            //Session.Remove("isSuperAdmin");
+            //Session.Remove("imageSrc");
+
+            Session.Clear();
+
             return RedirectToAction("Index", "Home");
         }
 

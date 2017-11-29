@@ -228,6 +228,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.html" />
+    <Content Include="500.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\fontawesome\font-awesome.css" />
     <Content Include="Content\fontawesome\font-awesome.min.css" />
@@ -315,6 +317,8 @@
     <Content Include="Content\fonts\Montserrat-SemiBold.ttf" />
     <Content Include="Content\fonts\Quicksand-Bold - Copy.ttf" />
     <Content Include="Content\fonts\Quicksand-Bold.ttf" />
+    <Content Include="404.aspx" />
+    <Content Include="500.aspx" />
     <None Include="Resources\LoginIcon.png" />
     <Content Include="Resources\Bold.png" />
     <Content Include="Resources\Italic.png" />
