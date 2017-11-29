@@ -316,6 +316,9 @@
     <Content Include="Content\fonts\Quicksand-Bold - Copy.ttf" />
     <Content Include="Content\fonts\Quicksand-Bold.ttf" />
     <None Include="Resources\LoginIcon.png" />
+    <Content Include="Resources\Bold.png" />
+    <Content Include="Resources\Italic.png" />
+    <Content Include="Resources\Underline.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="App_Code\myHelpers.cshtml" />
     <EntityDeploy Include="Models\YFUTModels.edmx">
