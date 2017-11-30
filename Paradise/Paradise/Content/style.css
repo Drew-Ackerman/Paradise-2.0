@@ -10,10 +10,10 @@
     box-shadow: -5px -2px 12px #767776;
 	text-align: left;
     z-index: 11;
+    cursor: default;
 }
 
 /* Modified from the Mozilla text editor example: https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla */
-
 img.intLink {
     border: 0;
     margin-left: 5px;

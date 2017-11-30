@@ -321,7 +321,10 @@
     <Content Include="500.aspx" />
     <None Include="Resources\LoginIcon.png" />
     <Content Include="Resources\Bold.png" />
+    <Content Include="Resources\Center.png" />
     <Content Include="Resources\Italic.png" />
+    <Content Include="Resources\Left_align.png" />
+    <Content Include="Resources\Right_align.png" />
     <Content Include="Resources\Underline.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="App_Code\myHelpers.cshtml" />
