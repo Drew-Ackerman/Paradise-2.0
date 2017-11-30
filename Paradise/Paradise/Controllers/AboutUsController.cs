@@ -81,19 +81,26 @@ namespace Paradise.Controllers
         [HttpPost]
         public ActionResult Email(string firstName, string lastName, string phone, string email, string message)
         {
-            if(firstName != "" && lastName != "" && email != "" && message != "")
+            try
             {
-                string messageBody = "My name is : " + firstName + " " + lastName + Environment.NewLine + "My phone number is : " + phone + Environment.NewLine + message;
-                MailMessage mailMessage = new MailMessage(email, "MatthewJensen7@mail.weber.edu", "Volunteering", messageBody);
-                SmtpClient mail = new SmtpClient();
-                mail.Credentials = new System.Net.NetworkCredential();
-                mail.Port = 587;
-                mail.Host = "smtp.gmail.com";
-                mail.EnableSsl = true;
-                //Add authentication for email
-                mail.Send(mailMessage);
+                if (firstName != "" && lastName != "" && email != "" && message != "")
+                {
+                    string messageBody = "My name is : " + firstName + " " + lastName + Environment.NewLine + "My phone number is : " + phone + Environment.NewLine + message;
+                    MailMessage mailMessage = new MailMessage(email, "MatthewJensen7@mail.weber.edu", "Volunteering", messageBody);
+                    SmtpClient mail = new SmtpClient();
+                    mail.Host = "localhost";
+                    mail.EnableSsl = true;
+                    //Add authentication for email
+                    mail.Send(mailMessage);
+                }
+                
             }
-            return View();
+            catch(Exception e)
+            {
+
+            }
+
+            return RedirectToAction("Edit", "AboutUs");
         }
     }
 }
