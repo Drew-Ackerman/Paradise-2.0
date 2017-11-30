@@ -320,10 +320,16 @@
     <Content Include="404.aspx" />
     <Content Include="500.aspx" />
     <None Include="Resources\LoginIcon.png" />
+    <Content Include="Resources\Add_indent.png" />
     <Content Include="Resources\Bold.png" />
+    <Content Include="Resources\Bulleted_list.png" />
     <Content Include="Resources\Center.png" />
+    <Content Include="Resources\Delete_indent.png" />
+    <Content Include="Resources\Hyperlink.png" />
     <Content Include="Resources\Italic.png" />
     <Content Include="Resources\Left_align.png" />
+    <Content Include="Resources\Numbered_list.png" />
+    <Content Include="Resources\Quote.png" />
     <Content Include="Resources\Right_align.png" />
     <Content Include="Resources\Underline.png" />
     <Content Include="Scripts\bootstrap.js" />
