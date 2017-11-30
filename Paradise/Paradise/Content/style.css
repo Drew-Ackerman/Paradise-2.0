@@ -5,7 +5,7 @@
 	position: relative;
 	visibility: hidden;
     height: 100px;
-	width: 200px;
+	width: 190px;
 	background-color: #edf2ee;
     box-shadow: -5px -2px 12px #767776;
 	text-align: left;
@@ -14,7 +14,7 @@
 }
 
 /* Modified from the Mozilla text editor example: https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla */
-img.intLink {
+img.tlBxIcon {
     border: 0;
     margin-left: 5px;
 }
