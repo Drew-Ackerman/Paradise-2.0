@@ -494,6 +494,16 @@ namespace Paradise.Controllers
             string username = Request["username"];
             string password = Request["password"];
 
+            if (Session["isLoggedIn"] == null && Session["failedLogins"] == null)
+            {
+                Session.Add("isLoggedIn", "False");
+                Session.Add("failedLogins", "0");
+            }
+            else if (Session["failedLogins"].ToString() == "4")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             identity = db.Admins.Where(a => a.userName == username && a.userPassword == password).ToList();
 
             if (identity.Count == 1)
@@ -501,6 +511,9 @@ namespace Paradise.Controllers
                 Session.Add("adminID", identity[0].admin_ID.ToString());
                 Session.Add("userName", identity[0].userName.ToString());
                 Session.Add("isSuperAdmin", identity[0].superAdmin.ToString());
+
+                Session["isLoggedIn"] = "True";
+                Session["failedLogins"] = "0";
 
                 Staff staff = identity[0].Staff;
                 Session.Add("imageSrc", staff.imageName.ToString());
@@ -511,6 +524,10 @@ namespace Paradise.Controllers
             }
             else
             {
+                Session["failedLogins"] = Convert.ToUInt16(Session["failedLogins"]) + 1;
+
+                string test = Session["failedLogins"].ToString();
+
                 return RedirectToAction("Index", "Home");
             }
         }
