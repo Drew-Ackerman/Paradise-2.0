@@ -6,6 +6,7 @@
         string imageSrc = String.Empty;
         string imageAlt = String.Empty;
         string userLabel = Session["userName"]?.ToString();
+        string loginMessage = String.Empty;
 
         if (String.IsNullOrEmpty(userLabel))
         {
@@ -18,6 +19,15 @@
             imageSrc = "/Content/Image/" + Session["userName"]?.ToString() + ".png";
             imageAlt = Session["userName"]?.ToString();
         }
+
+        if (Session["failedLogins"]?.ToString() == "4")
+        {
+            loginMessage = "The number of unsuccessful login attempts has been reached. Please try again later.";
+        }
+        else if (Session["failedLogins"] != null)
+        {
+            loginMessage = "The user name and/or password is invalid.";
+        }
     }
     @{
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="accountProfileButton">
@@ -29,15 +39,24 @@
         {
             <span href="#" class="dropdown-menu" id="accountDropdown">
 
-                @using (Html.BeginForm("LoginValidation", "Account", FormMethod.Post, new { id = "login", @class = "dropdown" }))
+                @if (Session["failedLogins"]?.ToString() == "4")
                 {
-                    @Html.AntiForgeryToken()
-
-                    <input type="text" placeholder="User name" id="username" name="username"><br>
-                    <input type="password" placeholder="Password" id="password" name="password"><br>
-
-                    <button id="loginSubmit">Login</button> 
+                    <text>@loginMessage</text>
                 }
+                else
+                {
+                    using (Html.BeginForm("LoginValidation", "Account", FormMethod.Post, new { id = "login", @class = "dropdown" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <input type="text" placeholder="User name" id="username" name="username"><br>
+                        <input type="password" placeholder="Password" id="password" name="password"><br>
+
+                        <button id="loginSubmit">Login</button>
+                        <text>@loginMessage</text>
+                    }
+                }
+                
             </span>
         }
         else
