@@ -112,7 +112,7 @@
                 @foreach (Paradise.Models.Event eventObj in ViewBag.events)
                 {
                     if(eventObj.active) {
-                        string html = "<div class=\"col - xs - 4 dropdown - events\"><p>" + eventObj.eventName + "<br>" + eventObj.eventDate + " at " + eventObj.eventTime + "</p><p class=\" row dropdown-content - events\">DATE: " + eventObj.eventDate + " <br>LOCATION: " + eventObj.eventLocation + " <br>DETAILS: " + eventObj.eventDetails + "</p></div>";
+                        string html = "<div class=\"col-xs-4 dropdown-events\"><p>" + eventObj.eventName + "<br>" + eventObj.eventDate.ToShortDateString() + " at " + eventObj.eventTime + "</p><p class=\" row dropdown-content-events\">DATE: " + eventObj.eventDate.ToShortDateString() + " <br>LOCATION: " + eventObj.eventLocation + " <br>DETAILS: " + eventObj.eventDetails + "</p></div>";
                         @:changeEvents('@Html.Raw(html)');
                     }
                 }
@@ -180,21 +180,27 @@
                                     <img src="/Content/profileImages/@Session["imageSrc"]" alt="@Session["userName"]" class="dropdown-toggle" id="profileImage" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" />
                                     <ul class="dropdown-menu">
                                         <li>
-                                            @Html.ActionLink("Add/Change staff", "Index", "Staffs")
+                                            @Html.ActionLink("Manage staff", "Index", "Staffs")
                                         </li>
                                         <li>
-                                            @Html.ActionLink("Add/Change donors", "Index", "Donors")
+                                            @Html.ActionLink("Manage donors", "Index", "Donors")
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Manage events", "Index", "Events")
+                                        </li>
+                                        <li>
+                                            @Html.ActionLink("Manage Profile Images", "Index", "ProfileImages")
                                         </li>
                                         @if(Session["isSuperAdmin"]?.ToString() == "True")
                                         {
                                             <li>
-                                                @Html.ActionLink("Add/Change Admins", "Index", "Admins")
+                                                @Html.ActionLink("Manage Admins", "Index", "Admins")
                                             </li>
                                         }
                                         else
                                         {
                                             <li>
-                                                @Html.ActionLink("Change Login Information", "Edit", "Admins", routeValues: new { id = Session["adminID"] }, htmlAttributes: null)
+                                                @Html.ActionLink("Manage Login Information", "Edit", "Admins", routeValues: new { id = Session["adminID"] }, htmlAttributes: null)
                                             </li>
                                         }
                                         @if (Model is Paradise.Models.Page) {

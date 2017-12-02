@@ -1,0 +1,67 @@
+﻿@model Paradise.Models.Event
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_EditLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Event</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.eventName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eventDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eventTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eventLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.eventDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eventDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.active)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.event_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

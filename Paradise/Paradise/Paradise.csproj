@@ -171,6 +171,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\ProfileImagesController.cs" />
     <Compile Include="Controllers\YouthStoriesController.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -425,8 +427,16 @@
     <Content Include="Views\Staffs\Edit.cshtml" />
     <Content Include="Views\Staffs\Index.cshtml" />
     <Content Include="Views\Shared\_EditToolBxPartial.cshtml" />
-    <Content Include="Views\YouthStories\Index.cshtml" />
+    <Content Include="Views\YouthStories\YouthStories.cshtml" />
     <Content Include="Views\YouthStories\Edit.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\ProfileImages\Index.cshtml" />
+    <Content Include="Views\ProfileImages\Delete.cshtml" />
+    <Content Include="Views\ProfileImages\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

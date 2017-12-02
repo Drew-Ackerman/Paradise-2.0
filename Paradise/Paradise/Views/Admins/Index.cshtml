@@ -9,7 +9,7 @@
     <h2>Index</h2>
 
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New Admin", "Create")
     </p>
     <table class="table">
         <tr>
@@ -46,7 +46,10 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.admin_ID }) |
                     @Html.ActionLink("Details", "Details", new { id = item.admin_ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.admin_ID })
+                    @if (Session["isSuperAdmin"]?.ToString() == "True")
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.admin_ID })
+                    }
                 </td>
             </tr>
         }

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_EditLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h2>Upload</h2>
+
+    @using (Html.BeginForm("Upload", "ProfileImages", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label for="image" class="control-label col-md-2">Choose a profile image:</label>
+                <div class="col-md-10">
+                    <input type="file" name="image" id="image" />
+                </div>
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Upload" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>

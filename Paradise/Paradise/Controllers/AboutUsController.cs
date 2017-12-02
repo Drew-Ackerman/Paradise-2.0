@@ -42,7 +42,7 @@ namespace Paradise.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "AboutUs");
+                return RedirectToAction("AboutUs", "AboutUs");
             }
         }
 
@@ -73,7 +73,7 @@ namespace Paradise.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "AboutUs");
+                return RedirectToAction("AboutUs", "AboutUs");
             }
 
         }

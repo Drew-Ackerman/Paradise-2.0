@@ -1,0 +1,58 @@
+﻿@model Paradise.Models.Staff
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_EditLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Upload a Profile Picture", "Create")
+    </p>
+
+    <table class="table">
+        @{
+            List<string> fileNames = new List<string>();
+            try
+            {
+                //Get all of the image file names
+                string[] files = Directory.GetFiles(Server.MapPath("~/Content/profileImages"));
+                foreach (string file in files)
+                {
+                    fileNames.Add(Path.GetFileName(file));
+                }
+            }
+            catch (IOException e)
+            {
+
+            }
+        }
+
+        <tr>
+            <th>
+                Profile Picture
+            </th>
+            <th>
+                Options
+            </th>
+        </tr>
+
+        @foreach(string fileName in fileNames)
+        {
+            <tr>
+                <td>
+                    @fileName.ToString()
+                </td>
+                <td>
+                    @if(Session["isSuperAdmin"]?.ToString() == "True" || fileName == Model.imageName) { 
+                        @Html.ActionLink("Delete", "Delete", new { file = fileName })
+                    }
+                </td>
+            </tr>
+        }  
+
+    </table>
+</div>
+

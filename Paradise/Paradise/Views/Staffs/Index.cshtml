@@ -9,7 +9,7 @@
     <h2>Index</h2>
 
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New Staff", "Create")
     </p>
     <table class="table">
         <tr>
@@ -70,26 +70,13 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.staff_ID }) |
                     @Html.ActionLink("Details", "Details", new { id = item.staff_ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.staff_ID })
+                    @if (Session["isSuperAdmin"]?.ToString() == "True")
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.staff_ID })
+                    }
                 </td>
             </tr>
         }
 
     </table>
-
-    <!--Move to its own page and add more features?-->
-    <form action="/Staffs/Upload" method="post" enctype="multipart/form-data">
-        @Html.AntiForgeryToken()
-        <div class="form-horizontal">
-            <div class="form-group">
-                <label for="image" class="control-label col-md-2">Add a profile image:</label>
-                <div class="col-md-10">
-                    <input type="file" name="image" id="image" />
-                </div>
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Upload" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    </form>
 </div>

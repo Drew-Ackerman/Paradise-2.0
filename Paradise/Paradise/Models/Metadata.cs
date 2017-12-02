@@ -132,6 +132,8 @@ namespace Paradise.Models
         public string eventName { get; set; }
         [Required]
         [Display(Name = "Event Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime eventDate { get; set; }
         [Required]
         [StringLength(15)]

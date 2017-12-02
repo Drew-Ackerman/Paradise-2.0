@@ -111,7 +111,7 @@
                 @foreach (Paradise.Models.Event eventObj in ViewBag.events)
                 {
                     if(eventObj.active) {
-                        string html = "<div class=\"col - xs - 4 dropdown - events\"><p>" + eventObj.eventName + "<br>" + eventObj.eventDate + " at " + eventObj.eventTime + "</p><p class=\" row dropdown-content - events\">DATE: " + eventObj.eventDate + " <br>LOCATION: " + eventObj.eventLocation + " <br>DETAILS: " + eventObj.eventDetails + "</p></div>";
+                        string html = "<div class=\"col-xs-4 dropdown-events\"><p>" + eventObj.eventName + "<br>" + eventObj.eventDate.ToShortDateString() + " at " + eventObj.eventTime + "</p><p class=\" row dropdown-content-events\">DATE: " + eventObj.eventDate.ToShortDateString() + " <br>LOCATION: " + eventObj.eventLocation + " <br>DETAILS: " + eventObj.eventDetails + "</p></div>";
                         @:changeEvents('@Html.Raw(html)');
                     }
                 }
