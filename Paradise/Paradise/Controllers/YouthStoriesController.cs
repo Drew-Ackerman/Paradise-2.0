@@ -11,23 +11,23 @@ using System.Web.Mvc;
 
 namespace Paradise.Controllers
 {
-    public class AboutUsController : Controller
+    public class YouthStoriesController : Controller
     {
         private YFUTEntities db = new YFUTEntities();
 
-        // GET: AboutUs
-        public ActionResult AboutUs()
+        // GET: YouthStories
+        public ActionResult YouthStories()
         {
             if (Session["userName"]?.ToString() == null)
             {
-                Page page = db.Pages.Find(3);
-                ViewBag.controllerName = "AboutUs";
+                Page page = db.Pages.Find(4);
+                ViewBag.controllerName = "YouthStories";
                 ViewBag.staff = db.Staffs.ToList();
                 return View(page);
             }
             else
             {
-                return RedirectToAction("Edit", "AboutUs");
+                return RedirectToAction("Edit", "YouthStories");
             }
         }
 
@@ -36,13 +36,13 @@ namespace Paradise.Controllers
             if (Session["userName"]?.ToString() != null)
             {
                 Page page = db.Pages.Find(3);
-                ViewBag.controllerName = "AboutUs";
+                ViewBag.controllerName = "YouthStories";
                 ViewBag.staff = db.Staffs.ToList();
                 return View(page);
             }
             else
             {
-                return RedirectToAction("Index", "AboutUs");
+                return RedirectToAction("Index", "YouthStories");
             }
         }
 
@@ -69,38 +69,13 @@ namespace Paradise.Controllers
                     db.Entry(page).State = EntityState.Modified;
                     db.SaveChanges();
                 }
-                return RedirectToAction("Edit", "AboutUs");
+                return RedirectToAction("Edit", "YouthStories");
             }
             else
             {
-                return RedirectToAction("Index", "AboutUs");
+                return RedirectToAction("Index", "YouthStories");
             }
 
-        }
-
-        [HttpPost]
-        public ActionResult Email(string firstName, string lastName, string phone, string email, string message)
-        {
-            try
-            {
-                if (firstName != "" && lastName != "" && email != "" && message != "")
-                {
-                    string messageBody = "My name is : " + firstName + " " + lastName + Environment.NewLine + "My phone number is : " + phone + Environment.NewLine + message;
-                    MailMessage mailMessage = new MailMessage(email, "MatthewJensen7@mail.weber.edu", "Volunteering", messageBody);
-                    SmtpClient mail = new SmtpClient();
-                    mail.Host = "localhost";
-                    mail.EnableSsl = true;
-                    //Add authentication for email
-                    mail.Send(mailMessage);
-                }
-                
-            }
-            catch(Exception e)
-            {
-
-            }
-
-            return RedirectToAction("Edit", "AboutUs");
         }
     }
 }

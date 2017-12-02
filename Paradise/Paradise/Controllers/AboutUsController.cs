@@ -11,23 +11,23 @@ using System.Web.Mvc;
 
 namespace Paradise.Controllers
 {
-    public class YouthStoriesController : Controller
+    public class AboutUsController : Controller
     {
         private YFUTEntities db = new YFUTEntities();
 
-        // GET: YouthStories
-        public ActionResult YouthStories()
+        // GET: AboutUs
+        public ActionResult AboutUs()
         {
             if (Session["userName"]?.ToString() == null)
             {
                 Page page = db.Pages.Find(3);
-                ViewBag.controllerName = "YouthStories";
+                ViewBag.controllerName = "AboutUs";
                 ViewBag.staff = db.Staffs.ToList();
                 return View(page);
             }
             else
             {
-                return RedirectToAction("Edit", "YouthStories");
+                return RedirectToAction("Edit", "AboutUs");
             }
         }
 
@@ -36,13 +36,13 @@ namespace Paradise.Controllers
             if (Session["userName"]?.ToString() != null)
             {
                 Page page = db.Pages.Find(3);
-                ViewBag.controllerName = "YouthStories";
+                ViewBag.controllerName = "AboutUs";
                 ViewBag.staff = db.Staffs.ToList();
                 return View(page);
             }
             else
             {
-                return RedirectToAction("Index", "YouthStories");
+                return RedirectToAction("Index", "AboutUs");
             }
         }
 
@@ -69,11 +69,11 @@ namespace Paradise.Controllers
                     db.Entry(page).State = EntityState.Modified;
                     db.SaveChanges();
                 }
-                return RedirectToAction("Edit", "YouthStories");
+                return RedirectToAction("Edit", "AboutUs");
             }
             else
             {
-                return RedirectToAction("Index", "YouthStories");
+                return RedirectToAction("Index", "AboutUs");
             }
 
         }
@@ -93,14 +93,14 @@ namespace Paradise.Controllers
                     //Add authentication for email
                     mail.Send(mailMessage);
                 }
-                
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
 
             }
 
-            return RedirectToAction("Edit", "YouthStories");
+            return RedirectToAction("Edit", "AboutUs");
         }
     }
 }
