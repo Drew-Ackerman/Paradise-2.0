@@ -194,6 +194,9 @@
     <Compile Include="Models\Error.cs">
       <DependentUpon>YFUTModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Event.cs">
+      <DependentUpon>YFUTModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImageContainer.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -422,7 +425,7 @@
     <Content Include="Views\Staffs\Edit.cshtml" />
     <Content Include="Views\Staffs\Index.cshtml" />
     <Content Include="Views\Shared\_EditToolBxPartial.cshtml" />
-    <Content Include="Views\YouthStories\YouthStories.cshtml" />
+    <Content Include="Views\YouthStories\Index.cshtml" />
     <Content Include="Views\YouthStories\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>

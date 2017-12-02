@@ -60,5 +60,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="YFUTModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="eventDetails" ColumnName="eventDetails" />
+          <ScalarProperty Name="eventLocation" ColumnName="eventLocation" />
+          <ScalarProperty Name="eventTime" ColumnName="eventTime" />
+          <ScalarProperty Name="eventDate" ColumnName="eventDate" />
+          <ScalarProperty Name="eventName" ColumnName="eventName" />
+          <ScalarProperty Name="event_ID" ColumnName="event_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

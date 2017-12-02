@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Matthew Jensen\Documents\GitHub\Paradise\Paradise\Paradise\Models\YFUTModels.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Matthew Jensen\Documents\GitHub\Paradise-2.0\Paradise\Paradise\Models\YFUTModels.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

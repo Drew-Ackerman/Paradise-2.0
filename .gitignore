@@ -6,3 +6,8 @@ Paradise/.vs/Paradise/v14/.suo
 Paradise/.vs/config/applicationhost.config
 Paradise/Paradise/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 *.dll
+Paradise/Paradise/obj/Debug/Paradise.csproj.FileListAbsolute.txt
+Paradise/Paradise/obj/Debug/Paradise.csproj.GenerateResource.Cache
+Paradise/Paradise/obj/Debug/Paradise.dll
+Paradise/Paradise/obj/Debug/Paradise.pdb
+Paradise/Paradise/obj/Debug/Paradise.Properties.Resources.resources

@@ -120,4 +120,33 @@ namespace Paradise.Models
         [Required]
         public string content { get; set; }
     }
+    public class EventMetadata
+    {
+        [Key]
+        [Required]
+        [Display(Name = "Event ID")]
+        public int event_ID { get; set; }
+        [Required]
+        [StringLength(20)]
+        [Display(Name = "Event Name")]
+        public string eventName { get; set; }
+        [Required]
+        [Display(Name = "Event Date")]
+        public System.DateTime eventDate { get; set; }
+        [Required]
+        [StringLength(15)]
+        [Display(Name = "Event Time")]
+        public string eventTime { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Event Location")]
+        public string eventLocation { get; set; }
+        [Required]
+        [StringLength(200)]
+        [Display(Name = "Event Details")]
+        public string eventDetails { get; set; }
+        [Required]
+        [Display(Name = "Active")]
+        public bool active { get; set; }
+    }
 }

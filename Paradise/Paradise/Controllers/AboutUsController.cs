@@ -20,7 +20,7 @@ namespace Paradise.Controllers
         {
             if (Session["userName"]?.ToString() == null)
             {
-                Page page = db.Pages.Find(3);
+                Page page = db.Pages.Where(p => p.pageName == "AboutUs").ToList()[0];
                 ViewBag.controllerName = "AboutUs";
                 ViewBag.staff = db.Staffs.ToList();
                 return View(page);
@@ -35,7 +35,7 @@ namespace Paradise.Controllers
         {
             if (Session["userName"]?.ToString() != null)
             {
-                Page page = db.Pages.Find(3);
+                Page page = db.Pages.Where(p => p.pageName == "AboutUs").ToList()[0];
                 ViewBag.controllerName = "AboutUs";
                 ViewBag.staff = db.Staffs.ToList();
                 return View(page);

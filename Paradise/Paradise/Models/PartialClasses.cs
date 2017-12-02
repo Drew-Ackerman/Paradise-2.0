@@ -31,4 +31,9 @@ namespace Paradise.Models
     public partial class Staff
     {
     }
+
+    [MetadataType(typeof(EventMetadata))]
+    public partial class Event
+    {
+    }
 }

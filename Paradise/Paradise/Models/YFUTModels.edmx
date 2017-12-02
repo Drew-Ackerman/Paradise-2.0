@@ -36,6 +36,18 @@
           <Property Name="errorDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="admin_ID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="event_ID" />
+          </Key>
+          <Property Name="event_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eventName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="eventDate" Type="date" Nullable="false" />
+          <Property Name="eventTime" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="eventLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="eventDetails" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Page">
           <Key>
             <PropertyRef Name="page_ID" />
@@ -87,6 +99,7 @@
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Donor" EntityType="Self.Donor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Error" EntityType="Self.Error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="Fk_Admin_Staff" Association="Self.Fk_Admin_Staff">
@@ -121,7 +134,7 @@
           <Property Name="donor_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="donorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="donorLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="donorYear" Type="String" Nullable="false" />
+          <Property Name="donorYear" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="active" Type="Boolean" Nullable="false" />
@@ -198,7 +211,20 @@
             <End Role="Admin" EntitySet="Admins" />
             <End Role="Error" EntitySet="Errors" />
           </AssociationSet>
+          <EntitySet Name="Events" EntityType="YFUTModel.Event" />
         </EntityContainer>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="event_ID" />
+          </Key>
+          <Property Name="event_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eventName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="eventDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="eventTime" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="eventLocation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eventDetails" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -261,6 +287,19 @@
                 <ScalarProperty Name="foundation" ColumnName="foundation" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="YFUTModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="eventDetails" ColumnName="eventDetails" />
+                <ScalarProperty Name="eventLocation" ColumnName="eventLocation" />
+                <ScalarProperty Name="eventTime" ColumnName="eventTime" />
+                <ScalarProperty Name="eventDate" ColumnName="eventDate" />
+                <ScalarProperty Name="eventName" ColumnName="eventName" />
+                <ScalarProperty Name="event_ID" ColumnName="event_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
