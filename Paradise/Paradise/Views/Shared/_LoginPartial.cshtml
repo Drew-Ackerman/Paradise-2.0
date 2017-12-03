@@ -1,7 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity;
 
 <li class="dropdown">
-    @*<script src="~/Scripts/gen_validatorv31.js"></script>*@
     @{
         string imageSrc = String.Empty;
         string imageAlt = String.Empty;
@@ -31,15 +30,15 @@
     }
     @{
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="accountProfileButton">
-            <img src="@imageSrc" alt="@imageAlt" height="50" width="50">
-            <ul id="profileImage">@userLabel</ul>
+            <img src="@imageSrc" alt="@imageAlt" height="50" width="50"><br>
+            <text>@userLabel</text>
         </a>
 
-        if (userLabel == "Login")
-        {
-            <span href="#" class="dropdown-menu" id="accountDropdown">
+        <span href="#" class="dropdown-menu" id="accountDropdown">
 
-                @if (Session["failedLogins"]?.ToString() == "4")
+            @if (userLabel == "Login")
+            {
+                if (Session["failedLogins"]?.ToString() == "4")
                 {
                     <text>@loginMessage</text>
                 }
@@ -52,38 +51,33 @@
                         <input type="text" placeholder="User name" id="username" name="username"><br>
                         <input type="password" placeholder="Password" id="password" name="password"><br>
 
-                        <button id="loginSubmit">Login</button>
+                        <button>Login</button>
                         <text>@loginMessage</text>
                     }
                 }
-                
-            </span>
-        }
-        else
-        {
-            <span href="#" class="dropdown-menu">
-                
-                @Html.ActionLink("Add/Change staff", "Index", "Staffs")
-                
-                @Html.ActionLink("Add/Change donors", "Index", "Donors")
+            }
+            else
+            {
+                @Html.ActionLink("Add/Change Staff", "Index", "Staffs")<br>
 
-                @if (Session["isSuperAdmin"]?.ToString() == "True")
+                @Html.ActionLink("Add/Change Donors", "Index", "Donors")<br>
+
+                if (Session["isSuperAdmin"]?.ToString() == "True")
                 {
-                    @Html.ActionLink("Add/Change Admins", "Index", "Admins")
+                    @Html.ActionLink("Add/Change Admins", "Index", "Admins")<br>
                 }
 
-                @if (Model is Paradise.Models.Page)
+                if (Model is Paradise.Models.Page)
                 {
-                    
                     <button onclick="savePage('@ViewBag.controllerName', '@Model.page_ID', '@Model.pageName', '@Model.pageDesc')">Save</button>
                 }
-                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logout", @class = "dropdown" }))
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logout", @class = "dropdown" }))
                 {
                     @Html.AntiForgeryToken()
-                    
+
                     <button id="logOff">Log Out</button>
                 }
-            </span>
-        }
-    }
+            }
+    </span>
+            }
 </li>     
