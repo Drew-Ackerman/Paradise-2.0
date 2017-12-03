@@ -16,7 +16,7 @@
         }
         else
         {
-            imageSrc = "/Content/Image/" + Session["userName"]?.ToString() + ".png";
+            imageSrc = "/Content/profileImages/" + @Session["imageSrc"];
             imageAlt = Session["userName"]?.ToString();
         }
 
@@ -31,7 +31,7 @@
     }
     @{
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="accountProfileButton">
-            <img src="@imageSrc" alt="@imageAlt">
+            <img src="@imageSrc" alt="@imageAlt" height="50" width="50">
             <ul id="profileImage">@userLabel</ul>
         </a>
 
@@ -61,40 +61,27 @@
         }
         else
         {
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="@imageSrc" alt="@imageAlt" class="dropdown-toggle" id="profileImage" data-toggle="dropdown" role="button" aria-haspopup="true"/>
-                <ul>@userLabel</ul>
-            </a>
             <span href="#" class="dropdown-menu">
-                <span>
-                    @Html.ActionLink("Add/Change staff", "Index", "Staffs")
-                </span>
-                <span>
-                    @Html.ActionLink("Add/Change donors", "Index", "Donors")
-                </span>
+                
+                @Html.ActionLink("Add/Change staff", "Index", "Staffs")
+                
+                @Html.ActionLink("Add/Change donors", "Index", "Donors")
+
                 @if (Session["isSuperAdmin"]?.ToString() == "True")
                 {
-                    <span>
-                        @Html.ActionLink("Add/Change Admins", "Index", "Admins")
-                    </span>
+                    @Html.ActionLink("Add/Change Admins", "Index", "Admins")
                 }
+
                 @if (Model is Paradise.Models.Page)
                 {
-                    <span>
-                        <button onclick="savePage('@ViewBag.controllerName', '@Model.page_ID', '@Model.pageName', '@Model.pageDesc')">Save</button>
-                    </span>
+                    
+                    <button onclick="savePage('@ViewBag.controllerName', '@Model.page_ID', '@Model.pageName', '@Model.pageDesc')">Save</button>
                 }
                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logout", @class = "dropdown" }))
                 {
                     @Html.AntiForgeryToken()
-
-                    <span>
-                        <button id="logOff">Log Out</button>
-                    </span>
-
-                    @*<span>
-                        <a href="javascript:document.getElementById('logout').submit()">Log Out</a>
-                    </span>*@
+                    
+                    <button id="logOff">Log Out</button>
                 }
             </span>
         }
