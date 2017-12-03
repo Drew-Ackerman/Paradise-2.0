@@ -18,13 +18,18 @@
         </select>
         <select onchange="formatDoc('fontsize',this[this.selectedIndex].value);this.selectedIndex=0;">
             <option class="heading" selected>-Font Size-</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+            <option value="24">24</option>
+            <option value="32">32</option>
+            <option value="34">34</option>
+            <option value="38">38</option>
+            <option value="48">48</option>
+            <option value="64">64</option>
+            <option value="87">87</option>
+            <option value="214">214</option>
         </select>
         <select onchange="formatDoc('forecolor',this[this.selectedIndex].value);this.selectedIndex=0;">
             <option class="heading" selected>-Font Color-</option>
@@ -53,6 +58,7 @@
         <img class="tlBxIcon" title="Quote" onclick="formatDoc('formatblock','blockquote');" src="~/Resources/Quote.png" />
         <img class="tlBxIcon" title="Delete indentation" onclick="formatDoc('outdent');" src="~/Resources/Delete_indent.png" />
         <img class="tlBxIcon" title="Add indentation" onclick="formatDoc('indent');" src="~/Resources/Add_indent.png" />
-        <img class="tlBxIcon" title="Insert Link" onclick="var link = prompt('Enter the URL here', 'http:\/\/'); if (link && link != '' && link != 'http://') { formatDoc('createlink', link) };" src="~/Resources/Hyperlink.png" />
+       <!--<img class="tlBxIcon" title="Insert Link" onclick="var link = prompt('Enter the URL here', 'http:\/\/'); if (link && link != '' && link != 'http://') { formatDoc('createlink', link) };" src="~/Resources/Hyperlink.png" />-->
+        <img class="tlBxIcon" title="Insert Link" onclick="formatDoc('unlink');" src="~/Resources/Hyperlink.png" /> 
     </div>
 </div>
