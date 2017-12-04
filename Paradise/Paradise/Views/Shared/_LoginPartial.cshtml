@@ -38,11 +38,7 @@
 
             @if (userLabel == "Login")
             {
-                if (Session["failedLogins"]?.ToString() == "4")
-                {
-                    <text>@loginMessage</text>
-                }
-                else
+                if (Session["failedLogins"]?.ToString() != "4")
                 {
                     using (Html.BeginForm("LoginValidation", "Account", FormMethod.Post, new { id = "login", @class = "dropdown" }))
                     {
@@ -52,9 +48,12 @@
                         <input type="password" placeholder="Password" id="password" name="password"><br>
 
                         <button>Login</button>
-                        <text>@loginMessage</text>
                     }
                 }
+
+                <span>
+                    <text>@loginMessage</text>
+                </span>
             }
             else
             {
@@ -78,6 +77,6 @@
                     <button>Log Out</button>
                 }
             }
-    </span>
-            }
+        </span>
+    }
 </li>     

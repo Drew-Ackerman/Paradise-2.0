@@ -597,6 +597,7 @@ footer {
     right: 0;
     color: white;
     text-decoration: none;
+    line-height: initial;
     background-color: black;
 }
 
@@ -619,6 +620,11 @@ footer {
     border-style: none;
     color: white;
     text-align: center;
+}
+
+#accountDropdown > span > text {
+    color: orangered;
+    font-size: 12px;
 }
 
 #accountDropdown > form > input {
