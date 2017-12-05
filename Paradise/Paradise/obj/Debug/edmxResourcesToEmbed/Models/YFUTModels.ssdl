@@ -31,6 +31,18 @@
     <Property Name="errorDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
     <Property Name="admin_ID" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="event_ID" />
+    </Key>
+    <Property Name="event_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="eventName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="eventDate" Type="date" Nullable="false" />
+    <Property Name="eventTime" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="eventLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="eventDetails" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="Page">
     <Key>
       <PropertyRef Name="page_ID" />
@@ -82,6 +94,7 @@
     <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Donor" EntityType="Self.Donor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Error" EntityType="Self.Error" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="Fk_Admin_Staff" Association="Self.Fk_Admin_Staff">

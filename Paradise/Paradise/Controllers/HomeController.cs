@@ -19,7 +19,7 @@ namespace Paradise.Controllers
         {
             if (Session["userName"]?.ToString() == null)
             {
-                Page page = db.Pages.Find(1);
+                Page page = db.Pages.Where(p => p.pageName == "Home").ToList()[0];
                 return View(page);
             }
             else
@@ -32,7 +32,7 @@ namespace Paradise.Controllers
         {
             if (Session["userName"]?.ToString() != null)
             {
-                Page page = db.Pages.Find(1);
+                Page page = db.Pages.Where(p => p.pageName == "Home").ToList()[0];
                 ViewBag.controllerName = "Home";
                 return View(page);
             }

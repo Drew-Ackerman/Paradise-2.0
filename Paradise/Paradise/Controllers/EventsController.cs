@@ -7,21 +7,19 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Paradise.Models;
-using System.Windows.Forms;
-using System.IO;
 
 namespace Paradise.Controllers
 {
-    public class StaffsController : Controller
+    public class EventsController : Controller
     {
         private YFUTEntities db = new YFUTEntities();
 
-        // GET: Staffs
+        // GET: Events
         public ActionResult Index()
         {
             if (Session["isSuperAdmin"]?.ToString() != null)
             {
-                return View(db.Staffs.ToList());
+                return View(db.Events.ToList());
             }
             else
             {
@@ -29,7 +27,7 @@ namespace Paradise.Controllers
             }
         }
 
-        // GET: Staffs/Details/5
+        // GET: Events/Details/5
         public ActionResult Details(int? id)
         {
             if (Session["isSuperAdmin"]?.ToString() != null)
@@ -38,12 +36,12 @@ namespace Paradise.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Staff staff = db.Staffs.Find(id);
-                if (staff == null)
+                Event @event = db.Events.Find(id);
+                if (@event == null)
                 {
                     return HttpNotFound();
                 }
-                return View(staff);
+                return View(@event);
             }
             else
             {
@@ -51,7 +49,7 @@ namespace Paradise.Controllers
             }
         }
 
-        // GET: Staffs/Create
+        // GET: Events/Create
         public ActionResult Create()
         {
             if (Session["isSuperAdmin"]?.ToString() != null)
@@ -64,23 +62,23 @@ namespace Paradise.Controllers
             }
         }
 
-        // POST: Staffs/Create
+        // POST: Events/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "staff_ID,firstName,lastName,jobTitle,position,foundation,email,active,imageName")] Staff staff)
+        public ActionResult Create([Bind(Include = "event_ID,eventName,eventDate,eventTime,eventLocation,eventDetails,active")] Event @event)
         {
             if (Session["isSuperAdmin"]?.ToString() != null)
             {
                 if (ModelState.IsValid)
                 {
-                    db.Staffs.Add(staff);
+                    db.Events.Add(@event);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
 
-                return View(staff);
+                return View(@event);
             }
             else
             {
@@ -88,7 +86,7 @@ namespace Paradise.Controllers
             }
         }
 
-        // GET: Staffs/Edit/5
+        // GET: Events/Edit/5
         public ActionResult Edit(int? id)
         {
             if (Session["isSuperAdmin"]?.ToString() != null)
@@ -97,12 +95,12 @@ namespace Paradise.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Staff staff = db.Staffs.Find(id);
-                if (staff == null)
+                Event @event = db.Events.Find(id);
+                if (@event == null)
                 {
                     return HttpNotFound();
                 }
-                return View(staff);
+                return View(@event);
             }
             else
             {
@@ -110,31 +108,22 @@ namespace Paradise.Controllers
             }
         }
 
-        // POST: Staffs/Edit/5
+        // POST: Events/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "staff_ID,firstName,lastName,jobTitle,position,foundation,email,active,imageName")] Staff staff)
+        public ActionResult Edit([Bind(Include = "event_ID,eventName,eventDate,eventTime,eventLocation,eventDetails,active")] Event @event)
         {
             if (Session["isSuperAdmin"]?.ToString() != null)
             {
                 if (ModelState.IsValid)
                 {
-                    db.Entry(staff).State = EntityState.Modified;
+                    db.Entry(@event).State = EntityState.Modified;
                     db.SaveChanges();
-
-                    Admin admin = db.Admins.Find(Int32.Parse(Session["adminID"]?.ToString()));
-                    Staff currentStaff = admin.Staff;
-
-                    if (currentStaff.staff_ID == staff.staff_ID) {
-                        Session["imageSrc"] = staff.imageName;
-                    }
-
                     return RedirectToAction("Index");
                 }
-
-                return View(staff);
+                return View(@event);
             }
             else
             {
@@ -142,7 +131,7 @@ namespace Paradise.Controllers
             }
         }
 
-        // GET: Staffs/Delete/5
+        // GET: Events/Delete/5
         public ActionResult Delete(int? id)
         {
             if (Session["isSuperAdmin"]?.ToString() == "True")
@@ -151,14 +140,14 @@ namespace Paradise.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                Staff staff = db.Staffs.Find(id);
-                if (staff == null)
+                Event @event = db.Events.Find(id);
+                if (@event == null)
                 {
                     return HttpNotFound();
                 }
-                return View(staff);
+                return View(@event);
             }
-            else if(Session["isSuperAdmin"]?.ToString() == "False")
+            else if (Session["isSuperAdmin"]?.ToString() == "False")
             {
                 return RedirectToAction("Edit", "Home");
             }
@@ -168,15 +157,15 @@ namespace Paradise.Controllers
             }
         }
 
-        // POST: Staffs/Delete/5
+        // POST: Events/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             if (Session["isSuperAdmin"]?.ToString() == "True")
             {
-                Staff staff = db.Staffs.Find(id);
-                db.Staffs.Remove(staff);
+                Event @event = db.Events.Find(id);
+                db.Events.Remove(@event);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

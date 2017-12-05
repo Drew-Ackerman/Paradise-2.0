@@ -443,6 +443,20 @@ footer {
 	  padding-left: 5%;	  
 	  text-transform: uppercase;
 }
+/*Start - Youth Stories Header*/
+.ys_header {
+	background-image: url(/Content/Image/ys_header.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 650px;
+}
+
+.ys_header div{
+	  padding-top: 8%;
+	  padding-left: 5%;	  
+	  text-transform: uppercase;
+}
+/*END - Youth Stories Header*/
 
 .donor_list {
 	background-color: white;
@@ -644,6 +658,77 @@ footer {
     text-align: center;
 }
 
+/*Drop Down Events Style*/
+ .dropdown-events {
+    position: relative;
+    display: inline-block;
+    background-color: #36454f;
+    height: 100px;
+	width: 350px;
+	margin: .5%;
+    padding: 12px 16px;
+   
+
+}
+
+.dropdown-content-events {
+    display: none;
+    position: absolute;
+    background-color: #D3D3D3;
+    min-width: 350px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 2;
+}
+
+.dropdown-events:hover .dropdown-content-events {
+    display: block;
+}
+
+.events_list {
+	background-color: white;
+	padding-left: 5%;
+}
+
+.dropdown-events p{
+	color: white;
+}
+
+.dropdown-content-events p {
+    color: black;
+}
+
+/**Youth Stories Nav area*/
+
+.sidenavys {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 12%;
+    left: 0;
+    background-color: #6E8D45;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenavys a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #edf2ee;
+    display: block;
+}
+
+.sidenavys a:hover {
+    color: #f1f1f1;
+}
+
+.mainys {
+    margin-left: 185px; /* Same as the width of the sidenav */
+}
+
+/*END youth stories nav area*/
 
 /*****************************************************************************************
 
@@ -741,4 +826,10 @@ footer {
      .navbar-right .dropdown-menu > li > a {
        margin: 10px 0 10px 0;
     }
+}
+
+/*Youth Stories Media Section*/
+@media screen and (max-height: 450px) {
+  .sidenavys {padding-top: 15px;}
+  .sidenavys a {font-size: 18px;}
 }

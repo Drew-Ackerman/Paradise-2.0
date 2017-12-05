@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Paradise.Models.Event>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_EditLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New Event", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.eventName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eventDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eventTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eventLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eventDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.active)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.eventName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eventDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eventTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eventLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eventDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.active)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.event_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.event_ID }) |
+            @if (Session["isSuperAdmin"]?.ToString() == "True")
+            {
+                @Html.ActionLink("Delete", "Delete", new { id = item.event_ID })
+            }
+        </td>
+    </tr>
+}
+
+</table>

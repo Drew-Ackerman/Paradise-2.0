@@ -98,6 +98,26 @@
 
             });
         </script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#eventsDiv").empty();
+                $("#eventsDiv").append("<div class=\"row events_list\"></div>");
+
+                function changeEvents(event) {
+                    $(".events_list").append(event);
+                }
+
+                @foreach (Paradise.Models.Event eventObj in ViewBag.events)
+                {
+                    if(eventObj.active) {
+                        string html = "<div class=\"col-xs-4 dropdown-events\"><p>" + eventObj.eventName + "<br>" + eventObj.eventDate.ToShortDateString() + " at " + eventObj.eventTime + "</p><p class=\" row dropdown-content-events\">DATE: " + eventObj.eventDate.ToShortDateString() + " <br>LOCATION: " + eventObj.eventLocation + " <br>DETAILS: " + eventObj.eventDetails + "</p></div>";
+                        @:changeEvents('@Html.Raw(html)');
+                    }
+                }
+
+            });
+        </script>
     }
 
 </head>
@@ -141,6 +161,7 @@
                                 <li>@Html.ActionLink("Staff", "AboutUs", "AboutUs", null, null, "staff-anchor", new { categoryid = "Staff" }, null)</li>
                                 <li>@Html.ActionLink("Board", "AboutUs", "AboutUs", null, null, "board-anchor", new { categoryid = "Board" }, null)</li>
                                 <li>@Html.ActionLink("Media", "AboutUs", "AboutUs", null, null, "media-anchor", new { categoryid = "Media" }, null)</li>
+                                <li>@Html.ActionLink("Youth Stories", "YouthStories", "YouthStories")</li>
                             </ul>
                         </li>
                         <li class="dropdown">@Html.ActionLink("Contact Info", "AboutUs", "AboutUs", null, null, "contact-anchor", new { categoryid = "Contact" }, null)</li>

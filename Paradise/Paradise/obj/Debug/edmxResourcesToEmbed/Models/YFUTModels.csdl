@@ -19,7 +19,7 @@
     <Property Name="donor_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="donorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="donorLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="donorYear" Type="String" Nullable="false" />
+    <Property Name="donorYear" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
     <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
     <Property Name="active" Type="Boolean" Nullable="false" />
@@ -96,5 +96,18 @@
       <End Role="Admin" EntitySet="Admins" />
       <End Role="Error" EntitySet="Errors" />
     </AssociationSet>
+    <EntitySet Name="Events" EntityType="YFUTModel.Event" />
   </EntityContainer>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="event_ID" />
+    </Key>
+    <Property Name="event_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="eventName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="eventDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="eventTime" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="eventLocation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="eventDetails" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+  </EntityType>
 </Schema>

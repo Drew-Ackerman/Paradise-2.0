@@ -18,9 +18,10 @@ namespace Paradise.Controllers
         {
             if (Session["userName"]?.ToString() == null)
             {
-                Page page = db.Pages.Find(2);
+                Page page = db.Pages.Where(p => p.pageName == "Program").ToList()[0];
                 ViewBag.controllerName = "Program";
                 ViewBag.donors = db.Donors.ToList();
+                ViewBag.events = db.Events.ToList();
                 return View(page);
             }
             else
@@ -33,14 +34,15 @@ namespace Paradise.Controllers
         {
             if (Session["userName"]?.ToString() != null)
             {
-                Page page = db.Pages.Find(2);
+                Page page = db.Pages.Where(p => p.pageName == "Program").ToList()[0];
                 ViewBag.controllerName = "Program";
                 ViewBag.donors = db.Donors.ToList();
+                ViewBag.events = db.Events.ToList();
                 return View(page);
             }
             else
             {
-                return RedirectToAction("Index", "Program");
+                return RedirectToAction("Program", "Program");
             }
         }
 
@@ -71,7 +73,7 @@ namespace Paradise.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Program");
+                return RedirectToAction("Program", "Program");
             }
 
         }
