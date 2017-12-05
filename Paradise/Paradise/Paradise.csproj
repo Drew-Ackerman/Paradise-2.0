@@ -289,7 +289,6 @@
     <Content Include="Content\Image\volunteer_icon.png" />
     <Content Include="Content\Image\yf_logo.svg" />
     <Content Include="Content\style.css" />
-    <Content Include="events.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Models\YFUTModels.Context.tt">
@@ -348,11 +347,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\script.js" />
-    <Content Include="Scripts\secondaryScripts.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="stories.html" />
-    <Content Include="volunteer.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

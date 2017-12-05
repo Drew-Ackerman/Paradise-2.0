@@ -29,7 +29,8 @@ namespace Paradise
             //Css to be included in the index page
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/style.css"));
+                      "~/Content/style.css",
+                      "~/Content/fontawesome/font-awesome.css"));
 
             //Not sure where this other junk goes, Loaded into About
             bundles.Add(new ScriptBundle("~/Scripts/js").Include(
