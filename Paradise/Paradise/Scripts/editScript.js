@@ -1,12 +1,24 @@
 ﻿/*
 Add event listener on window load to listen for left mouse clicks.
 When the left mouse is clicked, if the toolbox is inactive and we are 
-not currently editing, hide the toolbox.
+not currently editing, hide the toolbox. Also adds an event listener that
+changes the toolbox z-index when the user scrolls.
 */
 window.onload = function () {
     window.addEventListener('mouseup', function (e) {
         if (e.button == 0 && tlBxActive == false && inEdit == false) {
             hideToolBox();
+        }
+        else {
+            setTlBxZIndex(highZIndex);
+            currentZIndex = highZIndex;
+        }
+    });
+
+    window.addEventListener('scroll', function (e) {
+        if (currentZIndex > lowZIndex) {
+            setTlBxZIndex(lowZIndex);
+            currentZIndex = lowZIndex;
         }
     });
 }
@@ -16,6 +28,9 @@ var tlBxActive = false; // Is the mouse pointer over the toolbox?
 var inEdit = false;     // Are we currently editing?
 var activeEl;           // The element that currently has focus.
 var tlbxTopOffst = 120;
+var highZIndex = 11;
+var lowZIndex = 9;
+var currentZIndex; // The current z-index of the toolbox
 
 /*
 Turns Edit mode ON and OFF. Also adds and removes tag attributes necessary
@@ -75,13 +90,15 @@ function dsplyToolBox() {
     activeEl = document.activeElement;
     var rect = activeEl.getBoundingClientRect();
     var box = document.getElementById("toolbx");
-    //var winWidth = $(window).width();
 
     var bxTop = (rect.top - tlbxTopOffst) + window.scrollY;
     var bxLeft = (((activeEl.offsetWidth / 2) + rect.left) - (box.offsetWidth / 2)) + window.scrollX;
 
     box.style.top = (bxTop + "px");
     box.style.left = (bxLeft + "px");
+    setTlBxZIndex(highZIndex);
+    currentZIndex = highZIndex;
+    $(".tlBxIcon").attr("draggable", false);
     box.style.visibility = "visible";
 }
 
@@ -104,11 +121,22 @@ function setTlBxActive(sBool) {
     }
 }
 
+function setTlBxZIndex(_zIndex) {
+    document.getElementById("toolbx").style.zIndex = _zIndex;
+}
+
 /* Modified from Mozilla text editor code: https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla
    Formats the selected text based on the parameters given.
 */
 function formatDoc(sCmd, sValue) {
     if (canEdit == "true") {
+        if (sCmd == 'fontsize') {
+            sCmd = 'insertHTML';
+            var _fontSize = sValue;
+            sValue = $('<span/>', {
+                'text': document.getSelection()
+            }).css('font-size', _fontSize + 'px').prop('outerHTML');
+        }
         document.execCommand(sCmd, false, sValue);
     }
 }

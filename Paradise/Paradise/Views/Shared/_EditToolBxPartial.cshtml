@@ -18,13 +18,18 @@
         </select>
         <select onchange="formatDoc('fontsize',this[this.selectedIndex].value);this.selectedIndex=0;">
             <option class="heading" selected>-Font Size-</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="18">18</option>
+            <option value="20">20</option>
+            <option value="24">24</option>
+            <option value="32">32</option>
+            <option value="34">34</option>
+            <option value="38">38</option>
+            <option value="48">48</option>
+            <option value="64">64</option>
+            <option value="87">87</option>
+            <option value="214">214</option>
         </select>
         <select onchange="formatDoc('forecolor',this[this.selectedIndex].value);this.selectedIndex=0;">
             <option class="heading" selected>-Font Color-</option>
@@ -42,16 +47,18 @@
         </select>
     </div>
     <div id="toolBar2">
-        <img class="intLink" title="Bold" onclick="formatDoc('bold');" src="~/Resources/Bold.png" />
-        <img class="intLink" title="Italic" onclick="formatDoc('italic');" src="~/Resources/Italic.png" />
-        <img class="intLink" title="Underline" onclick="formatDoc('underline');" src="~/Resources/Underline.png" />
-        <img class="intLink" title="Align Left" onclick="formatDoc('justifyleft');" src="~/Resources/Left_align.png" />
-        <img class="intLink" title="Center" onclick="formatDoc('justifycenter');" src="~/Resources/Center.png" />
-        <img class="intLink" title="Align Right" onclick="formatDoc('justifyright');" src="~/Resources/Right_align.png" />
-        <img class="intLink" title="Numbered list" onclick="formatDoc('insertorderedlist');" src="data:image/gif;base64,R0lGODlhFgAWAMIGAAAAADljwliE35GjuaezxtHa7P///////yH5BAEAAAcALAAAAAAWABYAAAM2eLrc/jDKSespwjoRFvggCBUBoTFBeq6QIAysQnRHaEOzyaZ07Lu9lUBnC0UGQU1K52s6n5oEADs=" />
-        <img class="intLink" title="Dotted list" onclick="formatDoc('insertunorderedlist');" src="data:image/gif;base64,R0lGODlhFgAWAMIGAAAAAB1ChF9vj1iE33mOrqezxv///////yH5BAEAAAcALAAAAAAWABYAAAMyeLrc/jDKSesppNhGRlBAKIZRERBbqm6YtnbfMY7lud64UwiuKnigGQliQuWOyKQykgAAOw==" />
-        <img class="intLink" title="Quote" onclick="formatDoc('formatblock','blockquote');" src="data:image/gif;base64,R0lGODlhFgAWAIQXAC1NqjFRjkBgmT9nqUJnsk9xrFJ7u2R9qmKBt1iGzHmOrm6Sz4OXw3Odz4Cl2ZSnw6KxyqO306K63bG70bTB0rDI3bvI4P///////////////////////////////////yH5BAEKAB8ALAAAAAAWABYAAAVP4CeOZGmeaKqubEs2CekkErvEI1zZuOgYFlakECEZFi0GgTGKEBATFmJAVXweVOoKEQgABB9IQDCmrLpjETrQQlhHjINrTq/b7/i8fp8PAQA7" />
-        <img class="intLink" title="Add indentation" onclick="formatDoc('outdent');" src="data:image/gif;base64,R0lGODlhFgAWAMIHAAAAADljwliE35GjuaezxtDV3NHa7P///yH5BAEAAAcALAAAAAAWABYAAAM2eLrc/jDKCQG9F2i7u8agQgyK1z2EIBil+TWqEMxhMczsYVJ3e4ahk+sFnAgtxSQDqWw6n5cEADs=" />
-        <img class="intLink" title="Delete indentation" onclick="formatDoc('indent');" src="data:image/gif;base64,R0lGODlhFgAWAOMIAAAAADljwl9vj1iE35GjuaezxtDV3NHa7P///////////////////////////////yH5BAEAAAgALAAAAAAWABYAAAQ7EMlJq704650B/x8gemMpgugwHJNZXodKsO5oqUOgo5KhBwWESyMQsCRDHu9VOyk5TM9zSpFSr9gsJwIAOw==" />
+        <img class="tlBxIcon" title="Bold" onclick="formatDoc('bold');" src="~/Resources/Bold.png" />
+        <img class="tlBxIcon" title="Italic" onclick="formatDoc('italic');" src="~/Resources/Italic.png" />
+        <img class="tlBxIcon" title="Underline" onclick="formatDoc('underline');" src="~/Resources/Underline.png" />
+        <img class="tlBxIcon" title="Align Left" onclick="formatDoc('justifyleft');" src="~/Resources/Left_align.png" />
+        <img class="tlBxIcon" title="Center" onclick="formatDoc('justifycenter');" src="~/Resources/Center.png" />
+        <img class="tlBxIcon" title="Align Right" onclick="formatDoc('justifyright');" src="~/Resources/Right_align.png" />
+        <img class="tlBxIcon" title="Numbered list" onclick="formatDoc('insertorderedlist');" src="~/Resources/Numbered_list.png" />
+        <img class="tlBxIcon" title="Bulleted list" onclick="formatDoc('insertunorderedlist');" src="~/Resources/Bulleted_list.png" />
+        <img class="tlBxIcon" title="Quote" onclick="formatDoc('formatblock','blockquote');" src="~/Resources/Quote.png" />
+        <img class="tlBxIcon" title="Delete indentation" onclick="formatDoc('outdent');" src="~/Resources/Delete_indent.png" />
+        <img class="tlBxIcon" title="Add indentation" onclick="formatDoc('indent');" src="~/Resources/Add_indent.png" />
+       <!--<img class="tlBxIcon" title="Insert Link" onclick="var link = prompt('Enter the URL here', 'http:\/\/'); if (link && link != '' && link != 'http://') { formatDoc('createlink', link) };" src="~/Resources/Hyperlink.png" />-->
+        <img class="tlBxIcon" title="Insert Link" onclick="formatDoc('unlink');" src="~/Resources/Hyperlink.png" /> 
     </div>
 </div>

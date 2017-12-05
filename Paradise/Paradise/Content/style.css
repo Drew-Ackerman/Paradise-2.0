@@ -5,7 +5,7 @@
 	position: relative;
 	visibility: hidden;
     height: 100px;
-	width: 200px;
+	width: 190px;
 	background-color: #edf2ee;
     box-shadow: -5px -2px 12px #767776;
 	text-align: left;
@@ -14,7 +14,7 @@
 }
 
 /* Modified from the Mozilla text editor example: https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla */
-img.intLink {
+img.tlBxIcon {
     border: 0;
     margin-left: 5px;
 }
@@ -584,14 +584,9 @@ footer {
 #accountProfileButton {
     padding: 2px;
     padding-bottom: 2px;
-    text-align:center;
-    background-color: lightgray;
-}
-
-#accountProfileButton > ul {
     font-size: 15px;
-    padding: 0px;
     text-align: center;
+    background-color: lightgray;
 }
 
 #accountProfileButton:hover {
@@ -599,15 +594,40 @@ footer {
     background-color: black;
 }
 
-#accountProfileButton:focus {
+#accountDropdown {
+    position: absolute;
+    left: auto;
+    right: 0;
     color: white;
+    text-decoration: none;
+    line-height: initial;
     background-color: black;
 }
 
-#accountDropdown {
-    position: relative;
+#accountDropdown > a {
+    text-decoration: none;
     color: white;
-    background-color: black;
+}
+
+#accountDropdown > a:hover {
+    color: black;
+    background-color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+#accountDropdown > button {
+    width: 100%;
+    padding: 0px;
+    background-color: red;
+    border-style: none;
+    color: white;
+    text-align: center;
+}
+
+#accountDropdown > span > text {
+    color: orangered;
+    font-size: 12px;
 }
 
 #accountDropdown > form > input {
@@ -619,6 +639,7 @@ footer {
     width: 100%;
     padding: 0px;
     background-color: limegreen;
+    border-style: none;
     color: white;
     text-align: center;
 }
