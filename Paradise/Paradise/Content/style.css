@@ -674,7 +674,37 @@ footer {
     color: black;
 }
 
+/**Youth Stories Nav area*/
 
+.sidenavys {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 12%;
+    left: 0;
+    background-color: #6E8D45;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenavys a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #edf2ee;
+    display: block;
+}
+
+.sidenavys a:hover {
+    color: #f1f1f1;
+}
+
+.mainys {
+    margin-left: 185px; /* Same as the width of the sidenav */
+}
+
+/*END youth stories nav area*/
 
 /**********************************
 
@@ -772,4 +802,10 @@ footer {
      .navbar-right .dropdown-menu > li > a {
        margin: 10px 0 10px 0;
     }
+}
+
+/*Youth Stories Media Section*/
+@media screen and (max-height: 450px) {
+  .sidenavys {padding-top: 15px;}
+  .sidenavys a {font-size: 18px;}
 }
