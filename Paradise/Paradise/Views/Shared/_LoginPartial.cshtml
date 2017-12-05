@@ -1,7 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity;
 
 <li class="dropdown">
-    @*<script src="~/Scripts/gen_validatorv31.js"></script>*@
     @{
         string imageSrc = String.Empty;
         string imageAlt = String.Empty;
@@ -16,7 +15,7 @@
         }
         else
         {
-            imageSrc = "/Content/Image/" + Session["userName"]?.ToString() + ".png";
+            imageSrc = "/Content/profileImages/" + @Session["imageSrc"];
             imageAlt = Session["userName"]?.ToString();
         }
 
@@ -31,19 +30,15 @@
     }
     @{
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="accountProfileButton">
-            <img src="@imageSrc" alt="@imageAlt">
-            <ul id="profileImage">@userLabel</ul>
+            <img src="@imageSrc" alt="@imageAlt" height="50" width="50"><br>
+            <text>@userLabel</text>
         </a>
 
-        if (userLabel == "Login")
-        {
-            <span href="#" class="dropdown-menu" id="accountDropdown">
+        <span href="#" class="dropdown-menu" id="accountDropdown">
 
-                @if (Session["failedLogins"]?.ToString() == "4")
-                {
-                    <text>@loginMessage</text>
-                }
-                else
+            @if (userLabel == "Login")
+            {
+                if (Session["failedLogins"]?.ToString() != "4")
                 {
                     using (Html.BeginForm("LoginValidation", "Account", FormMethod.Post, new { id = "login", @class = "dropdown" }))
                     {
@@ -52,51 +47,36 @@
                         <input type="text" placeholder="User name" id="username" name="username"><br>
                         <input type="password" placeholder="Password" id="password" name="password"><br>
 
-                        <button id="loginSubmit">Login</button>
-                        <text>@loginMessage</text>
+                        <button>Login</button>
                     }
                 }
-                
-            </span>
-        }
-        else
-        {
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="@imageSrc" alt="@imageAlt" class="dropdown-toggle" id="profileImage" data-toggle="dropdown" role="button" aria-haspopup="true"/>
-                <ul>@userLabel</ul>
-            </a>
-            <span href="#" class="dropdown-menu">
+
                 <span>
-                    @Html.ActionLink("Add/Change staff", "Index", "Staffs")
+                    <text>@loginMessage</text>
                 </span>
-                <span>
-                    @Html.ActionLink("Add/Change donors", "Index", "Donors")
-                </span>
-                @if (Session["isSuperAdmin"]?.ToString() == "True")
+            }
+            else
+            {
+                @Html.ActionLink("Add/Change Staff", "Index", "Staffs")<br>
+
+                @Html.ActionLink("Add/Change Donors", "Index", "Donors")<br>
+
+                if (Session["isSuperAdmin"]?.ToString() == "True")
                 {
-                    <span>
-                        @Html.ActionLink("Add/Change Admins", "Index", "Admins")
-                    </span>
+                    @Html.ActionLink("Add/Change Admins", "Index", "Admins")<br>
                 }
-                @if (Model is Paradise.Models.Page)
+
+                if (Model is Paradise.Models.Page)
                 {
-                    <span>
-                        <button onclick="savePage('@ViewBag.controllerName', '@Model.page_ID', '@Model.pageName', '@Model.pageDesc')">Save</button>
-                    </span>
+                    <button onclick="savePage('@ViewBag.controllerName', '@Model.page_ID', '@Model.pageName', '@Model.pageDesc')">Save</button>
                 }
-                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logout", @class = "dropdown" }))
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logout", @class = "dropdown" }))
                 {
                     @Html.AntiForgeryToken()
 
-                    <span>
-                        <button id="logOff">Log Out</button>
-                    </span>
-
-                    @*<span>
-                        <a href="javascript:document.getElementById('logout').submit()">Log Out</a>
-                    </span>*@
+                    <button>Log Out</button>
                 }
-            </span>
-        }
+            }
+        </span>
     }
 </li>     

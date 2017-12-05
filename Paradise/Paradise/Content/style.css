@@ -104,7 +104,6 @@ a{
 }
 
 li{
-    list-style-type:none;
     font-family: "montserrat-regular";
 	font-size: 24px;
 	line-height: 44px;
@@ -537,6 +536,10 @@ footer {
 	 visibility: hidden;
 }
 
+.list-style-none{
+    list-style:none;
+}
+
 .gmap{
 	margin-top: 5%;
 	width: 368px;
@@ -595,14 +598,9 @@ footer {
 #accountProfileButton {
     padding: 2px;
     padding-bottom: 2px;
-    text-align:center;
-    background-color: lightgray;
-}
-
-#accountProfileButton > ul {
     font-size: 15px;
-    padding: 0px;
     text-align: center;
+    background-color: lightgray;
 }
 
 #accountProfileButton:hover {
@@ -610,15 +608,40 @@ footer {
     background-color: black;
 }
 
-#accountProfileButton:focus {
+#accountDropdown {
+    position: absolute;
+    left: auto;
+    right: 0;
     color: white;
+    text-decoration: none;
+    line-height: initial;
     background-color: black;
 }
 
-#accountDropdown {
-    position: relative;
+#accountDropdown > a {
+    text-decoration: none;
     color: white;
-    background-color: black;
+}
+
+#accountDropdown > a:hover {
+    color: black;
+    background-color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+#accountDropdown > button {
+    width: 100%;
+    padding: 0px;
+    background-color: red;
+    border-style: none;
+    color: white;
+    text-align: center;
+}
+
+#accountDropdown > span > text {
+    color: orangered;
+    font-size: 12px;
 }
 
 #accountDropdown > form > input {
@@ -630,6 +653,7 @@ footer {
     width: 100%;
     padding: 0px;
     background-color: limegreen;
+    border-style: none;
     color: white;
     text-align: center;
 }
@@ -706,11 +730,11 @@ footer {
 
 /*END youth stories nav area*/
 
-/**********************************
+/*****************************************************************************************
 
 *       Media Queries:            *
 
-**********************************/
+*****************************************************************************************/
 @media (max-width: 1200px) {
     .navbar-header {
         float: none;
