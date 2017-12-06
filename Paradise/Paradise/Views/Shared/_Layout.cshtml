@@ -27,7 +27,7 @@
 
                 @foreach (Paradise.Models.Staff staff in ViewBag.staff)
                 {
-                    if(staff.active) {
+                    if (staff.active) {
                         string html = "<div class=\"col-xs-12 col-md-4 thumbnail\" style=\"text-align:center\"><img src=\"/Content/profileImages/" + staff.imageName + "\" title=\"" + staff.firstName + " " + staff.lastName + "\" alt=\"" + staff.firstName + " " + staff.lastName + "\" class=\"img-responsive center-block\"><p class=\"caption\">" + staff.firstName + " " + staff.lastName + "<br>" + staff.jobTitle + ", Youth Futures<br>" + staff.position + ", " + staff.foundation + "<br><a href=\"mailto:" + staff.email + "\">" + staff.email + "</a></p></div>";
                         @:changeStaff('@Html.Raw(html)');
                     }
@@ -70,7 +70,7 @@
 
                 @foreach (Paradise.Models.Donor donor in ViewBag.donors)
                 {
-                    if(donor.active == true) {
+                    if (donor.active == true) {
                         string level = donor.donorLevel.ToLower();
                         string html = "<div class=\"col-xs-4 donor_box ";
 
@@ -110,12 +110,49 @@
 
                 @foreach (Paradise.Models.Event eventObj in ViewBag.events)
                 {
-                    if(eventObj.active) {
+                    if (eventObj.active) {
                         string html = "<div class=\"col-xs-4 dropdown-events\"><p>" + eventObj.eventName + "<br>" + eventObj.eventDate.ToShortDateString() + " at " + eventObj.eventTime + "</p><p class=\" row dropdown-content-events\">DATE: " + eventObj.eventDate.ToShortDateString() + " <br>LOCATION: " + eventObj.eventLocation + " <br>DETAILS: " + eventObj.eventDetails + "</p></div>";
                         @:changeEvents('@Html.Raw(html)');
                     }
                 }
 
+            });
+        </script>
+    }
+    else if (ViewBag.controllerName == "YouthStories")
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#storyContainer").empty();
+                $("#storyContainer").append("<div class=\"sidenavys\"></div>");
+                $("#storyContainer").append("<div class=\"main\" id=\"storyMain\"></div>");
+
+                function changeStories(story) {
+                    $(".sidenavys").append(story);
+                }
+
+                @foreach (Paradise.Models.Story story in ViewBag.stories)
+                {
+                    if (story.active) {
+                        string html = "<a class=\"storyItem\" href=\"#storyMain\">" + story.storyTitle + "</a>";
+                        @:changeStories('@Html.Raw(html)');
+                    }
+                }
+
+                $(".storyItem").click(function () {
+                    var title = $(this).text();
+                    $("#storyMain").empty();
+
+                    jQuery.ajax({
+                        type: 'GET',
+                        url: '/YouthStories/getStoryJson',
+                        data: { title: title },
+                        success: function (data) {
+                            //data should be a json object
+                            $("#storyMain").append(data["html"]);
+                        }
+                    });
+                });
             });
         </script>
     }

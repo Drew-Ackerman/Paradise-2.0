@@ -210,6 +210,9 @@
     <Compile Include="Models\Staff.cs">
       <DependentUpon>YFUTModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Story.cs">
+      <DependentUpon>YFUTModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\YFUTModels.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

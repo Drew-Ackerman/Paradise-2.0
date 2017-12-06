@@ -151,4 +151,26 @@ namespace Paradise.Models
         [Display(Name = "Active")]
         public bool active { get; set; }
     }
+    public class StoryMetadata
+    {
+        [Key]
+        [Required]
+        [Display(Name = "Story_ID")]
+        public int story_ID { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Short Story Title")]
+        public string storyTitle { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Story Name")]
+        public string storyName { get; set; }
+        [Required]
+        [AllowHtml]
+        [Display(Name = "Story Content")]
+        public string storyContent { get; set; }
+        [Required]
+        [Display(Name = "Active")]
+        public bool active { get; set; }
+    }
 }

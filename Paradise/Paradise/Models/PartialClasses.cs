@@ -36,4 +36,9 @@ namespace Paradise.Models
     public partial class Event
     {
     }
+
+    [MetadataType(typeof(StoryMetadata))]
+    public partial class Story
+    {
+    }
 }

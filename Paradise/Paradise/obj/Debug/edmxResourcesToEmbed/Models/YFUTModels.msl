@@ -73,5 +73,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Stories">
+      <EntityTypeMapping TypeName="YFUTModel.Story">
+        <MappingFragment StoreEntitySet="Story">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="storyContent" ColumnName="storyContent" />
+          <ScalarProperty Name="storyName" ColumnName="storyName" />
+          <ScalarProperty Name="storyTitle" ColumnName="storyTitle" />
+          <ScalarProperty Name="story_ID" ColumnName="story_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

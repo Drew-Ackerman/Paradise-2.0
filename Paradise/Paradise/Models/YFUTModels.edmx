@@ -71,6 +71,16 @@
           <Property Name="imageName" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="active" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Story">
+          <Key>
+            <PropertyRef Name="story_ID" />
+          </Key>
+          <Property Name="story_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="storyTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="storyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="storyContent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+        </EntityType>
         <Association Name="Fk_Admin_Staff">
           <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
           <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
@@ -102,6 +112,7 @@
           <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Story" EntityType="Self.Story" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="Fk_Admin_Staff" Association="Self.Fk_Admin_Staff">
             <End Role="Staff" EntitySet="Staff" />
             <End Role="Admin" EntitySet="Admin" />
@@ -212,6 +223,7 @@
             <End Role="Error" EntitySet="Errors" />
           </AssociationSet>
           <EntitySet Name="Events" EntityType="YFUTModel.Event" />
+          <EntitySet Name="Stories" EntityType="YFUTModel.Story" />
         </EntityContainer>
         <EntityType Name="Event">
           <Key>
@@ -223,6 +235,16 @@
           <Property Name="eventTime" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="eventLocation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="eventDetails" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Story">
+          <Key>
+            <PropertyRef Name="story_ID" />
+          </Key>
+          <Property Name="story_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="storyTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="storyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="storyContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="active" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
@@ -300,6 +322,17 @@
                 <ScalarProperty Name="eventDate" ColumnName="eventDate" />
                 <ScalarProperty Name="eventName" ColumnName="eventName" />
                 <ScalarProperty Name="event_ID" ColumnName="event_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stories">
+            <EntityTypeMapping TypeName="YFUTModel.Story">
+              <MappingFragment StoreEntitySet="Story">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="storyContent" ColumnName="storyContent" />
+                <ScalarProperty Name="storyName" ColumnName="storyName" />
+                <ScalarProperty Name="storyTitle" ColumnName="storyTitle" />
+                <ScalarProperty Name="story_ID" ColumnName="story_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

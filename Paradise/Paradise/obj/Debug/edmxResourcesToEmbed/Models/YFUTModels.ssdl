@@ -66,6 +66,16 @@
     <Property Name="imageName" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="active" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="Story">
+    <Key>
+      <PropertyRef Name="story_ID" />
+    </Key>
+    <Property Name="story_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="storyTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="storyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="storyContent" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+  </EntityType>
   <Association Name="Fk_Admin_Staff">
     <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
     <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
@@ -97,6 +107,7 @@
     <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Page" EntityType="Self.Page" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Story" EntityType="Self.Story" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="Fk_Admin_Staff" Association="Self.Fk_Admin_Staff">
       <End Role="Staff" EntitySet="Staff" />
       <End Role="Admin" EntitySet="Admin" />

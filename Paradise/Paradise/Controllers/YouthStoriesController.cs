@@ -22,7 +22,7 @@ namespace Paradise.Controllers
             {
                 Page page = db.Pages.Where(p => p.pageName == "YouthStories").ToList()[0];
                 ViewBag.controllerName = "YouthStories";
-                ViewBag.staff = db.Staffs.ToList();
+                ViewBag.stories = db.Stories.ToList();
                 return View(page);
             }
             else
@@ -37,13 +37,24 @@ namespace Paradise.Controllers
             {
                 Page page = db.Pages.Where(p => p.pageName == "YouthStories").ToList()[0];
                 ViewBag.controllerName = "YouthStories";
-                ViewBag.staff = db.Staffs.ToList();
+                ViewBag.stories = db.Stories.ToList();
                 return View(page);
             }
             else
             {
                 return RedirectToAction("YouthStories", "YouthStories");
             }
+        }
+
+        [HttpGet]
+        public ActionResult getStoryJson(string title)
+        {
+            Story selectedStory = db.Stories.Where(s => s.storyTitle == title).ToList()[0];
+            string html = "<h2>" + selectedStory.storyName + "</h2><p class=\"col-xs-12\">" + selectedStory.storyContent + "</p>";
+            JsonResult json = new JsonResult();
+            json.Data = new { html =  html};
+            json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            return json;
         }
 
         [HttpPost]

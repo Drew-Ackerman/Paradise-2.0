@@ -13,6 +13,7 @@
         <AssociationConnector Association="YFUTModel.Fk_Admin_Staff" ManuallyRouted="false" />
         <AssociationConnector Association="YFUTModel.Fk_Error_Admin" ManuallyRouted="false" />
         <EntityTypeShape EntityType="YFUTModel.Event" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="YFUTModel.Story" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

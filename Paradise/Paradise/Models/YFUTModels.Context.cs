@@ -31,5 +31,6 @@ namespace Paradise.Models
         public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Event> Events { get; set; }
+        public virtual DbSet<Story> Stories { get; set; }
     }
 }
