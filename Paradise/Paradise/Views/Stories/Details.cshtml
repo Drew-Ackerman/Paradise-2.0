@@ -1,0 +1,51 @@
+﻿@model Paradise.Models.Story
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_EditLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Story</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.storyTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.storyTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.storyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.storyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.storyContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.storyContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.active)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.story_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,5 +1,9 @@
 
 /*BEGIN JOSEPH'S ADDITIONS (DO NOT REMOVE)----------------------------------------------->*/
+#profileImage {
+            width: 100px;
+            height: 100px;
+}
 
 .toolbox {
 	position: relative;

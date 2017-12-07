@@ -173,6 +173,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\ProfileImagesController.cs" />
+    <Compile Include="Controllers\StoriesController.cs" />
     <Compile Include="Controllers\YouthStoriesController.cs" />
     <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -435,6 +436,11 @@
     <Content Include="Views\ProfileImages\Index.cshtml" />
     <Content Include="Views\ProfileImages\Delete.cshtml" />
     <Content Include="Views\ProfileImages\Create.cshtml" />
+    <Content Include="Views\Stories\Create.cshtml" />
+    <Content Include="Views\Stories\Delete.cshtml" />
+    <Content Include="Views\Stories\Details.cshtml" />
+    <Content Include="Views\Stories\Edit.cshtml" />
+    <Content Include="Views\Stories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

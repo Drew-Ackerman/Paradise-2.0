@@ -88,9 +88,15 @@ namespace Paradise.Controllers
                     string messageBody = "My name is : " + firstName + " " + lastName + Environment.NewLine + "My phone number is : " + phone + Environment.NewLine + message;
                     MailMessage mailMessage = new MailMessage(email, "MatthewJensen7@mail.weber.edu", "Volunteering", messageBody);
                     SmtpClient mail = new SmtpClient();
-                    mail.Host = "localhost";
+                    mail.Host = "smtp.gmail.com";
+                    mail.Port = 587;
                     mail.EnableSsl = true;
+                    mail.UseDefaultCredentials = false;
+                    mail.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    mail.Timeout = 1000;
                     //Add authentication for email
+                    //This email functionality works, provided that you give a legit email and password.
+                    mail.Credentials = new NetworkCredential("", "");
                     mail.Send(mailMessage);
                 }
 
