@@ -28,6 +28,10 @@ img.tlBxIcon {
     margin: 5px;
 }
 
+#fontColorDrpDwn option {
+    font-weight: bold;
+}
+
 /*END JOSEPH'S ADDITIONS----------------------------------------------------------------------->*/
 
 @font-face {

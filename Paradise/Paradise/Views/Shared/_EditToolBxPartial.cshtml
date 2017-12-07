@@ -8,13 +8,13 @@
     <div id="toolBar1">
         <select onchange="formatDoc('fontname',this[this.selectedIndex].value);this.selectedIndex=0;">
             <option class="heading" selected>-Font-</option>
-            <option>Arial</option>
-            <option>Arial Black</option>
-            <option>Courier New</option>
-            <option>Times New Roman</option>
-            <option>Montserrat-Light</option>
-            <option>Montserrat-Regular</option>
-            <option>Quicksand-Bold</option>
+            <option style="font-family:Arial">Arial</option>
+            <option style="font-family:Arial Black">Arial Black</option>
+            <option style="font-family:Courier">Courier New</option>
+            <option style="font-family:Times New Roman">Times New Roman</option>
+            <option style="font-family:Montserrat-Light">Montserrat-Light</option>
+            <option style="font-family:Montserrat-Regular">Montserrat-Regular</option>
+            <option style="font-family:Quicksand-Bold">Quicksand-Bold</option>
         </select>
         <select onchange="formatDoc('fontsize',this[this.selectedIndex].value);this.selectedIndex=0;">
             <option class="heading" selected>-Font Size-</option>
@@ -31,19 +31,19 @@
             <option value="87">87</option>
             <option value="214">214</option>
         </select>
-        <select onchange="formatDoc('forecolor',this[this.selectedIndex].value);this.selectedIndex=0;">
+        <select id="fontColorDrpDwn" onchange="formatDoc('forecolor',this[this.selectedIndex].value);this.selectedIndex=0;">
             <option class="heading" selected>-Font Color-</option>
-            <option value="#83a44a">Green</option>
-            <option value="#8ebc3d">Light Green</option>
-            <option value="#6E8D45">Dark Green</option>
-            <option value="#3f4ca3">Blue</option>
-            <option value="#e83930">Red</option>
-            <option value="#474747">Dark Grey</option>
-            <option value="#c3c3c3">Light Grey</option>
-            <option value="#c3c3c3">Platinum</option>
-            <option value="#632e1c">Brown</option>
-            <option value="#000000">Black</option>
-            <option value="#ffffff">White</option>
+            <option style="color:#83a44a" value="#83a44a">Green</option>
+            <option style="color:#8ebc3d" value="#8ebc3d">Light Green</option>
+            <option style="color:#6E8D45" value="#6E8D45">Dark Green</option>
+            <option style="color:#3f4ca3" value="#3f4ca3">Blue</option>
+            <option style="color:#e83930" value="#e83930">Red</option>
+            <option style="color:#474747" value="#474747">Dark Grey</option>
+            <option style="color:#c3c3c3" value="#c3c3c3">Light Grey</option>
+            <option style="color:#c3c3c3" value="#c3c3c3">Platinum</option>
+            <option style="color:#632e1c" value="#632e1c">Brown</option>
+            <option style="color:#000000" value="#000000">Black</option>
+            <option style="color:#000000" value="#ffffff">White</option>
         </select>
     </div>
     <div id="toolBar2">
@@ -58,7 +58,6 @@
         <img class="tlBxIcon" title="Quote" onclick="formatDoc('formatblock','blockquote');" src="~/Resources/Quote.png" />
         <img class="tlBxIcon" title="Delete indentation" onclick="formatDoc('outdent');" src="~/Resources/Delete_indent.png" />
         <img class="tlBxIcon" title="Add indentation" onclick="formatDoc('indent');" src="~/Resources/Add_indent.png" />
-       <!--<img class="tlBxIcon" title="Insert Link" onclick="var link = prompt('Enter the URL here', 'http:\/\/'); if (link && link != '' && link != 'http://') { formatDoc('createlink', link) };" src="~/Resources/Hyperlink.png" />-->
-        <img class="tlBxIcon" title="Insert Link" onclick="formatDoc('unlink');" src="~/Resources/Hyperlink.png" /> 
+        <img class="tlBxIcon" title="Insert Link" onclick="var link = prompt('Enter the URL here', 'http:\/\/'); if (link && link != '' && link != 'http://') { formatDoc('createlink', link) };" src="~/Resources/Hyperlink.png" />
     </div>
 </div>
