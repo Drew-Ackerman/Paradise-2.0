@@ -57,13 +57,23 @@
             }
             else
             {
-                @Html.ActionLink("Add/Change Staff", "Index", "Staffs")<br>
+                @Html.ActionLink("Manage staff", "Index", "Staffs")<br>
 
-                @Html.ActionLink("Add/Change Donors", "Index", "Donors")<br>
+                @Html.ActionLink("Manage donors", "Index", "Donors")<br>
+
+                @Html.ActionLink("Manage events", "Index", "Events")<br>
+
+                @Html.ActionLink("Manage stories", "Index", "Stories")<br>
+
+                @Html.ActionLink("Manage Profile Images", "Index", "ProfileImages")<br>
 
                 if (Session["isSuperAdmin"]?.ToString() == "True")
                 {
-                    @Html.ActionLink("Add/Change Admins", "Index", "Admins")<br>
+                    @Html.ActionLink("Manage Admins", "Index", "Admins")<br>
+                }
+                else
+                {
+                    @Html.ActionLink("Manage Login Information", "Edit", "Admins", routeValues: new { id = Session["adminID"] }, htmlAttributes: null)<br>
                 }
 
                 if (Model is Paradise.Models.Page)

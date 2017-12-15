@@ -208,9 +208,9 @@
                             </li>
                             <li class="dropdown">@Html.ActionLink("Contact Info", "Edit", "AboutUs", null, null, "contact-anchor", new { categoryid = "Contact" }, null)</li>
                             <li class="dropdown">@Html.ActionLink("Donate", "Edit", "Program", null, null, "donate-anchor", new { categoryid = "Donate" }, null)</li>                        
-                            @*@Html.Partial("_LoginPartial")*@
+                            @Html.Partial("_LoginPartial")
 
-                            <li class="dropdown">
+                            @*<li class="dropdown">
                                     <img src="/Content/profileImages/@Session["imageSrc"]" alt="@Session["userName"]" class="dropdown-toggle" id="profileImage" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" />
                                     <ul class="dropdown-menu">
                                         <li>
@@ -253,7 +253,7 @@
                                             </li>
                                         }
                                     </ul>
-                                </li>
+                                </li>*@
                             <li>
                                 <button id="editBtn" onclick="toggleEditBtn()">Turn edit ON</button>
                             </li>
