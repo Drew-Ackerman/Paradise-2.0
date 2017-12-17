@@ -39,7 +39,7 @@ CREATE TABLE Staff
  CREATE TABLE Error
  (error_ID int IDENTITY(1,1) NOT NULL,
   errorDesc nvarchar(1000) NOT NULL,
-  errorDate dateTime  Not NULL,
+  errorDate dateTime  NOT NULL,
   admin_ID int NULL);
  
  CREATE TABLE Donor

@@ -384,6 +384,8 @@ footer {
   min-height: 200px;
   background-color: #8ebc3d;
   padding: 1.5% 0 0 0;
+  position: relative;
+  z-index: 2;
 }
 
 .copyright{
