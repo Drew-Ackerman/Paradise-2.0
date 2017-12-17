@@ -97,14 +97,13 @@ namespace Paradise.Models
     public class ErrorMetadata
     {
         [Key]
-        [Required]
         public int error_ID;
         [Required]
         [StringLength(1000)]
         public string errorDesc;
         [Required]
-        public byte[] errorDate;
-        [Required]
+        [DataType(DataType.DateTime)]
+        public System.DateTime errorDate;
         public int admin_ID;
     }
     public class PageMetadata
@@ -166,7 +165,6 @@ namespace Paradise.Models
         [Display(Name = "Story Name")]
         public string storyName { get; set; }
         [Required]
-        [AllowHtml]
         [Display(Name = "Story Content")]
         public string storyContent { get; set; }
         [Required]

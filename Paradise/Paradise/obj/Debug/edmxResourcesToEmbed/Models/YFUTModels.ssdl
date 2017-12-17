@@ -28,8 +28,8 @@
     </Key>
     <Property Name="error_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="errorDesc" Type="nvarchar" MaxLength="1000" Nullable="false" />
-    <Property Name="errorDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
-    <Property Name="admin_ID" Type="int" Nullable="false" />
+    <Property Name="errorDate" Type="datetime" Nullable="false" StoreGeneratedPattern="None" />
+    <Property Name="admin_ID" Type="int" />
   </EntityType>
   <EntityType Name="Event">
     <Key>
@@ -88,18 +88,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="Fk_Error_Admin">
-    <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
-    <End Role="Error" Type="Self.Error" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Admin">
-        <PropertyRef Name="admin_ID" />
-      </Principal>
-      <Dependent Role="Error">
-        <PropertyRef Name="admin_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="YFUTModelStoreContainer">
     <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Donor" EntityType="Self.Donor" Schema="dbo" store:Type="Tables" />
@@ -111,10 +99,6 @@
     <AssociationSet Name="Fk_Admin_Staff" Association="Self.Fk_Admin_Staff">
       <End Role="Staff" EntitySet="Staff" />
       <End Role="Admin" EntitySet="Admin" />
-    </AssociationSet>
-    <AssociationSet Name="Fk_Error_Admin" Association="Self.Fk_Error_Admin">
-      <End Role="Admin" EntitySet="Admin" />
-      <End Role="Error" EntitySet="Error" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

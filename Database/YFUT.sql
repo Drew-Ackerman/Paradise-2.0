@@ -39,8 +39,8 @@ CREATE TABLE Staff
  CREATE TABLE Error
  (error_ID int IDENTITY(1,1) NOT NULL,
   errorDesc nvarchar(1000) NOT NULL,
-  errorDate timestamp NOT NULL,
-  admin_ID int NOT NULL);
+  errorDate dateTime  Not NULL,
+  admin_ID int NULL);
  
  CREATE TABLE Donor
  (donor_ID int IDENTITY(1,1) NOT NULL,
@@ -101,9 +101,9 @@ ALTER TABLE Error
 	ADD CONSTRAINT Pk_Error
 	PRIMARY KEY CLUSTERED (error_ID);
 
-ALTER TABLE Error
-	ADD CONSTRAINT Fk_Error_Admin
-	FOREIGN KEY (admin_ID) REFERENCES Admin(admin_ID);
+--ALTER TABLE Error
+	--ADD CONSTRAINT Fk_Error_Admin
+	--FOREIGN KEY (admin_ID) REFERENCES Admin(admin_ID);
 
 --Donor Table
 ALTER TABLE Donor

@@ -14,12 +14,6 @@ namespace Paradise.Models
     
     public partial class Admin
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Admin()
-        {
-            this.Errors = new HashSet<Error>();
-        }
-    
         public int admin_ID { get; set; }
         public int staff_ID { get; set; }
         public string userName { get; set; }
@@ -27,7 +21,5 @@ namespace Paradise.Models
         public bool superAdmin { get; set; }
     
         public virtual Staff Staff { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Error> Errors { get; set; }
     }
 }

@@ -33,8 +33,8 @@
           </Key>
           <Property Name="error_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="errorDesc" Type="nvarchar" MaxLength="1000" Nullable="false" />
-          <Property Name="errorDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
-          <Property Name="admin_ID" Type="int" Nullable="false" />
+          <Property Name="errorDate" Type="datetime" Nullable="false" StoreGeneratedPattern="None" />
+          <Property Name="admin_ID" Type="int" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -93,18 +93,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Fk_Error_Admin">
-          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
-          <End Role="Error" Type="Self.Error" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Admin">
-              <PropertyRef Name="admin_ID" />
-            </Principal>
-            <Dependent Role="Error">
-              <PropertyRef Name="admin_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="YFUTModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Donor" EntityType="Self.Donor" Schema="dbo" store:Type="Tables" />
@@ -116,10 +104,6 @@
           <AssociationSet Name="Fk_Admin_Staff" Association="Self.Fk_Admin_Staff">
             <End Role="Staff" EntitySet="Staff" />
             <End Role="Admin" EntitySet="Admin" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_Error_Admin" Association="Self.Fk_Error_Admin">
-            <End Role="Admin" EntitySet="Admin" />
-            <End Role="Error" EntitySet="Error" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -136,7 +120,6 @@
           <Property Name="userPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="superAdmin" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Staff" Relationship="Self.Fk_Admin_Staff" FromRole="Admin" ToRole="Staff" />
-          <NavigationProperty Name="Errors" Relationship="Self.Fk_Error_Admin" FromRole="Admin" ToRole="Error" />
         </EntityType>
         <EntityType Name="Donor">
           <Key>
@@ -156,9 +139,8 @@
           </Key>
           <Property Name="error_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="errorDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="errorDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="admin_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Admin" Relationship="Self.Fk_Error_Admin" FromRole="Error" ToRole="Admin" />
+          <Property Name="errorDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="admin_ID" Type="Int32" />
         </EntityType>
         <EntityType Name="Page">
           <Key>
@@ -196,18 +178,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Fk_Error_Admin">
-          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
-          <End Role="Error" Type="Self.Error" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Admin">
-              <PropertyRef Name="admin_ID" />
-            </Principal>
-            <Dependent Role="Error">
-              <PropertyRef Name="admin_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="YFUTEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Donors" EntityType="Self.Donor" />
@@ -217,10 +187,6 @@
           <AssociationSet Name="Fk_Admin_Staff" Association="Self.Fk_Admin_Staff">
             <End Role="Staff" EntitySet="Staffs" />
             <End Role="Admin" EntitySet="Admins" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_Error_Admin" Association="Self.Fk_Error_Admin">
-            <End Role="Admin" EntitySet="Admins" />
-            <End Role="Error" EntitySet="Errors" />
           </AssociationSet>
           <EntitySet Name="Events" EntityType="YFUTModel.Event" />
           <EntitySet Name="Stories" EntityType="YFUTModel.Story" />
