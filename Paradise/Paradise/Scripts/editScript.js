@@ -129,6 +129,7 @@ function setTlBxZIndex(_zIndex) {
    Formats the selected text based on the parameters given.
 */
 function formatDoc(sCmd, sValue) {
+    var goodLink = true;
     if (canEdit == "true") {
         if (sCmd == 'fontsize') {
             sCmd = 'insertHTML';
@@ -137,7 +138,17 @@ function formatDoc(sCmd, sValue) {
                 'text': document.getSelection()
             }).css('font-size', _fontSize + 'px').prop('outerHTML');
         }
-        document.execCommand(sCmd, false, sValue);
+        if (sCmd == 'createlink') {
+            if ((sValue.substring(0, 7) != 'http://' && sValue.substring(0, 8) != 'https://') ||
+				(sValue == 'http://' || sValue == 'https://')) {
+                console.log(sValue.substring(0, 7));
+                alert("Invalid URL. Please enter a URL beginning with 'http://' or 'https://'");
+                goodLink = false;
+            }
+        }
+        if (goodLink) {
+            document.execCommand(sCmd, false, sValue);
+        }
     }
 }
 

@@ -340,6 +340,8 @@
     <Content Include="Resources\Left_align.png" />
     <Content Include="Resources\Numbered_list.png" />
     <Content Include="Resources\Quote.png" />
+    <Content Include="Resources\Remove_format.png" />
+    <Content Include="Resources\Remove_link.png" />
     <Content Include="Resources\Right_align.png" />
     <Content Include="Resources\Underline.png" />
     <Content Include="Scripts\bootstrap.js" />

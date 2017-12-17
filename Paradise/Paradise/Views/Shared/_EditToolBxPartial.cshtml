@@ -58,6 +58,8 @@
         <img class="tlBxIcon" title="Quote" onclick="formatDoc('formatblock','blockquote');" src="~/Resources/Quote.png" />
         <img class="tlBxIcon" title="Delete indentation" onclick="formatDoc('outdent');" src="~/Resources/Delete_indent.png" />
         <img class="tlBxIcon" title="Add indentation" onclick="formatDoc('indent');" src="~/Resources/Add_indent.png" />
-        <img class="tlBxIcon" title="Insert Link" onclick="var link = prompt('Enter the URL here', 'http:\/\/'); if (link && link != '' && link != 'http://') { formatDoc('createlink', link) };" src="~/Resources/Hyperlink.png" />
+        <img class="tlBxIcon" title="Insert Link" onclick="var link = prompt('Enter the URL here', 'http:\/\/'); { formatDoc('createlink', link) };" src="~/Resources/Hyperlink.png" />
+        <img class="tlBxIcon" title="Remove Link" onclick="formatDoc('unlink');" src="~/Resources/Remove_link.png" />
+        <img class="tlBxIcon" title="Remove Formatting" onclick="formatDoc('removeFormat');" src="~/Resources/Remove_format.png" />
     </div>
 </div>
