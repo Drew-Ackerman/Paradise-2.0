@@ -16,9 +16,7 @@ namespace Paradise.Models
     {
         public int error_ID { get; set; }
         public string errorDesc { get; set; }
-        public byte[] errorDate { get; set; }
-        public int admin_ID { get; set; }
-    
-        public virtual Admin Admin { get; set; }
+        public System.DateTime errorDate { get; set; }
+        public Nullable<int> admin_ID { get; set; }
     }
 }
